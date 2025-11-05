@@ -1,0 +1,10 @@
+@font-face {
+    font-family: Baloo ;
+    src: url("./assets/fonts/Baloo2-SemiBold.ttf");
+}
+
+@import "tailwindcss";
+
+@theme{
+    --font-baloo: Baloo, sans-serif;
+}
