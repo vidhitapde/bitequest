@@ -26,6 +26,7 @@
     "expo-splash-screen": "~31.0.10",
     "expo-status-bar": "~3.0.8",
     "expo-web-browser": "~15.0.8",
+    "icon-gen": "^5.0.0",
     "lucide-react-native": "^0.552.0",
     "nativewind": "^4.2.1",
     "prettier-plugin-tailwindcss": "^0.5.14",

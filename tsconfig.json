@@ -24,6 +24,9 @@
     "expo-env.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "expo-env.d.ts",
+    "app",
+    "nativewind-env.d.ts"
   ]
 }

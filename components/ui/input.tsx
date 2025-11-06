@@ -13,7 +13,7 @@ function Input({
         props.editable === false &&
           cn(
             'opacity-50',
-            Platform.select({ web: 'disabled:pointer-events-none disabled:cursor-not-allowed' }) ?? ''
+            Platform.select({ web: 'disabled:pointer-events-none disabled:cursor-not-allowed' })
           ),
         Platform.select({
           web: cn(
@@ -22,7 +22,7 @@ function Input({
             'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive'
           ),
           native: 'placeholder:text-muted-foreground/50',
-        }) ?? '',
+        }),
         className
       )}
       {...props}
