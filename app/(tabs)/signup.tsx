@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 });
  
-export default function LogIn() {
+export default function SignUp() {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const [state, setState] = React.useState({
@@ -38,15 +38,22 @@ export default function LogIn() {
   return (
     <View className = "flex-1 bg-[#E9EDC9] content-center">
         <View className="mt-10">
-            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46] mt-16">Log In</Text>
-            <Text className="text-center mb-6 mx-6">Enter your username and password to access BiteQuest.</Text>
+            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46] mt-16">Sign Up</Text>
+            <Text className="text-center mb-6 mx-6">Create an account to explore BiteQuest.</Text>
             <View className="flex justify-center mx-auto w-5/6 m-6 gap-4">
                 <Input
-                keyboardType="email-address"
-                textContentType="emailAddress"
-                autoComplete="email"
-                placeholder="Email"
-                className="p-4 rounded-full bg-white"
+                    keyboardType="default"
+                    textContentType="name"
+                    autoComplete="name"
+                    placeholder="Name"
+                    className="p-4 rounded-full bg-white"
+                />
+                <Input
+                    keyboardType="email-address"
+                    textContentType="emailAddress"
+                    autoComplete="email"
+                    placeholder="Email"
+                    className="p-4 rounded-full bg-white"
                 />
                 <View className="relative">
                     <Input
@@ -73,26 +80,36 @@ export default function LogIn() {
                         </Button>
                     </View>
                 </View>
-                <View className="flex-row justify-between">
-                    <View className="flex flex-row items-center gap-3">
-                        <Checkbox
-                            id="terms"
-                            checked={state.rememberMe}
-                            onCheckedChange={toggleCheckedState('rememberMe')}
-                        />
-                        <Label
-                            onPress={Platform.select({ native: toggleCheckedState('rememberMe') })}
-                            htmlFor="terms">
-                            Remember me
-                        </Label>
+                <View className="relative">
+                    <Input
+                        secureTextEntry={!showPassword}
+                        placeholder="Confirm password"
+                        keyboardType="default"
+                        returnKeyType="done"
+                        textContentType="password"
+                        className="p-4 rounded-full bg-white"
+                    />
+                    <View className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            onPress={() => setShowPassword(!showPassword)}
+                        >
+                            <Text className="text-muted-foreground">
+                                <Ionicons
+                                    name={showPassword ? "eye-off" : "eye"}
+                                    size={24}
+                                    color="gray"
+                                />
+                            </Text>
+                        </Button>
                     </View>
-                    <Text className="">Forgot password?</Text>
                 </View>
             </View>
             <Button>
-                <Text className ="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">Login</Text>
+                <Text className ="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">Create Account</Text>
             </Button>
-            <Text className="text-center">Don't have an account? Sign up here</Text>
+            <Text className="text-center">Already have an account? Log in here</Text>
         </View>
     </View>
   );
