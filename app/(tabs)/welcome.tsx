@@ -38,7 +38,7 @@ export default function Welcome() {
   return (
     <View className = "flex-1 bg-[#E9EDC9] content-center">
         <View className="mt-10">
-            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46]">Log In</Text>
+            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46] mt-16">Log In</Text>
             <Text className="text-center mb-6 mx-6">Enter your username and password to access Bitequest features.</Text>
             <View className="flex justify-center mx-auto w-5/6 m-6 gap-4">
                 <Input
