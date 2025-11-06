@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from '@/components/ui/label';
+import { Label } from "@/components/ui/label";
 import * as Haptics from 'expo-haptics';
 import React from "react";
 
