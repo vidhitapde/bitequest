@@ -2,7 +2,7 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 import React from "react";
 
-import "/Users/nicholegodfrey/cs180/bitequest/global.css";
+import "../../global.css";
  
 export default function Profile() {
   return (

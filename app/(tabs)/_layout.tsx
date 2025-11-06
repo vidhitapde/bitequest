@@ -26,17 +26,19 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      initialRouteName= "shop"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarStyle: {backgroundColor: '#723D46'},
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        headerShown: false,
       }}>
-      <Tabs.Screen
-        name="index"
+      {/* <Tabs.Screen
+        name="shop"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="code" color={color} />,
+          title: 'Shop',
+          tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="shopping-bag" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -52,12 +54,20 @@ export default function TabLayout() {
             </Link>
           ),
         }}
+      /> */}
+      <Tabs.Screen
+        name="shop"
+        options={{
+          title: 'Shop',
+          tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="shopping-basket" color={color} />,
+          headerShown: false,
+        }}
       />
       <Tabs.Screen
-        name="two"
+        name="map"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="code" color={color} />,
+          title: 'Map',
+          tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="map" color={color} />,
           headerShown: false,
         }}
       />

@@ -2,10 +2,10 @@ import { Button, StyleSheet } from 'react-native';
 
 import { View } from '@/components/Themed';
 
-export default function TabTwoScreen() {
+export default function ShopScreen() {
   return (
     <View style={styles.container}>
-      <Button className="bg-white rounded-lg " title="Post" onPress={() => alert('Button pressed!')} />
+      <Button className="bg-white rounded-lg " title="Shop" onPress={() => alert('Button pressed!')} />
     </View>
   );
 }
