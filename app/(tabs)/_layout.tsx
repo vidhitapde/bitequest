@@ -26,7 +26,6 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      initialRouteName= "shop"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         tabBarStyle: {backgroundColor: '#723D46'},
@@ -79,6 +78,7 @@ export default function TabLayout() {
           headerShown: false,
         }}
       />
+      
     </Tabs>
   );
 }

@@ -1,22 +1,23 @@
-import "../../global.css"
-import { Platform, View } from "react-native";
+import "../global.css"
+import { Platform, View, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { useRouter } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import React from "react";
 
  
 export default function LogIn() {
+    const router = useRouter();
     const [showPassword, setShowPassword] = React.useState(false);
 
     const [state, setState] = React.useState({
         rememberMe: false,
     });
-
 
     function toggleCheckedState(key: keyof typeof state) {
     return () => {
@@ -79,13 +80,20 @@ export default function LogIn() {
                             Remember me
                         </Label>
                     </View>
-                    <Text className="">Forgot password?</Text>
+                    <Pressable onPress={() => router.push('/forgotpassword')}>
+                        <Text className="">Forgot password?</Text>
+                    </Pressable>
                 </View>
             </View>
-            <Button>
+            <Button onPress={() => router.push('/(tabs)/map')}>
                 <Text className ="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">Login</Text>
             </Button>
-            <Text className="text-center">Don't have an account? Sign up here</Text>
+            <View className="flex-row justify-center">
+                <Text>Don't have an account? Sign up </Text>
+                <Pressable onPress={() => router.push('/signup')}>
+                    <Text className ="text-blue-600 font-bold">here</Text>
+                </Pressable>
+            </View>
         </View>
     </View>
   );
