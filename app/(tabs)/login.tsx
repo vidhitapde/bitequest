@@ -1,5 +1,5 @@
 import "../../global.css"
-import { Platform, View, StyleSheet } from "react-native";
+import { Platform, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
@@ -9,13 +9,6 @@ import { Label } from "@/components/ui/label";
 import * as Haptics from 'expo-haptics';
 import React from "react";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
  
 export default function LogIn() {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -37,9 +30,9 @@ export default function LogIn() {
 
   return (
     <View className = "flex-1 bg-[#E9EDC9] content-center">
-        <View className="mt-10">
-            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46] mt-16">Log In</Text>
-            <Text className="text-center mb-6 mx-6">Enter your username and password to access BiteQuest.</Text>
+        <View className="mt-40">
+            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46]">Log In</Text>
+            <Text className="text-center mb-6 mx-6">Enter your email and password to access BiteQuest.</Text>
             <View className="flex justify-center mx-auto w-5/6 m-6 gap-4">
                 <Input
                 keyboardType="email-address"
