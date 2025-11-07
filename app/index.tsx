@@ -19,7 +19,7 @@ export default function Loading() {
   
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.replace('/(tabs)/shop');
+      router.replace('/(tabs)/login');
     }, 1500); 
     return () => clearTimeout(timer);
   },[router]);
