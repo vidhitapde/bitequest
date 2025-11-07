@@ -1,6 +1,6 @@
-import 'react-native';
+import "react-native";
 
-declare module 'react-native' {
+declare module "react-native" {
   // Add common `className` support used by nativewind/cssInterop in this repo.
   interface ViewProps {
     className?: string;
@@ -25,7 +25,7 @@ declare module 'react-native' {
 }
 
 // Lucide icons also receive `className` via cssInterop
-declare module 'lucide-react-native' {
+declare module "lucide-react-native" {
   interface LucideProps {
     className?: string;
   }

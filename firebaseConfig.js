@@ -4,9 +4,9 @@ import { initializeApp } from "firebase/app";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getAuth } from 'firebase/auth';
+import { getAuth } from "firebase/auth";
 // import {...} from 'firebase/database';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore } from "firebase/firestore";
 // import {...} from 'firebase/functions';
 // import {...} from 'firebase/storage';
 
@@ -19,7 +19,7 @@ const firebaseConfig = {
   storageBucket: "bitequest-a879a.firebasestorage.app",
   messagingSenderId: "663209340329",
   appId: "1:663209340329:web:944441cd5cd570018d28b8",
-  measurementId: "G-0H7RDPYF15"
+  measurementId: "G-0H7RDPYF15",
 };
 
 // Initialize Firebase

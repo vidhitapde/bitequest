@@ -7,9 +7,9 @@ module.exports = {
     extend: {
       fontFamily: {
         baloo2: ["Baloo2"],
-        balooregular:["Baloo"]
-      }
+        balooregular: ["Baloo"],
+      },
     },
   },
   plugins: [],
-} 
+};
