@@ -1,11 +1,15 @@
-import { Button, StyleSheet } from 'react-native';
+import { Button, StyleSheet } from "react-native";
 
-import { View } from '@/components/Themed';
+import { View } from "@/components/Themed";
 
 export default function MapScreen() {
   return (
     <View style={styles.container}>
-      <Button className="bg-white rounded-lg " title="Post" onPress={() => alert('Button pressed!')} />
+      <Button
+        className="bg-white rounded-lg "
+        title="Post"
+        onPress={() => alert("Button pressed!")}
+      />
     </View>
   );
 }
@@ -13,17 +17,17 @@ export default function MapScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FEFAE0',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FEFAE0",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
 });
