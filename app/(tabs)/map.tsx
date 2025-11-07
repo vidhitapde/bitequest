@@ -2,9 +2,13 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Image, ImageBackground, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
+<<<<<<< HEAD:app/(tabs)/two.tsx
 import "/Users/nicholegodfrey/cs180/bitequest/global.css";
  
 export default function TabTwoScreen() {
+=======
+export default function MapScreen() {
+>>>>>>> abad30569c44bd00e039f6a0a0c8d160fb2a11a8:app/(tabs)/map.tsx
   return (
     <ImageBackground
       source={require('../../assets/images/background.png')}
