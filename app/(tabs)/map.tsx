@@ -1,14 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
 import { Image, ImageBackground, ScrollView, Text, TouchableOpacity, View } from "react-native";
-
-<<<<<<< HEAD:app/(tabs)/two.tsx
-import "/Users/nicholegodfrey/cs180/bitequest/global.css";
- 
-export default function TabTwoScreen() {
-=======
+import MapView from 'react-native-maps';
+import "../../global.css";
 export default function MapScreen() {
->>>>>>> abad30569c44bd00e039f6a0a0c8d160fb2a11a8:app/(tabs)/map.tsx
   return (
     <ImageBackground
       source={require('../../assets/images/background.png')}
@@ -28,11 +22,15 @@ export default function MapScreen() {
             </View>
           </View>
           <View className="flex justify-center items-center">
-           <Image 
-             className="w-full justify-center align-middle"
-             source={require('../../assets/images/California.png')}
-             style={{ marginTop: 100 }}
-           />
+           <MapView
+           style={{ width: '85%', height: 500, marginTop: 80 }}
+        region={{
+          latitude: 36.7783, 
+          longitude: -119.4179,
+          latitudeDelta: 5, 
+          longitudeDelta: 5,
+        }}
+      />
            </View>
         </ScrollView>
         
