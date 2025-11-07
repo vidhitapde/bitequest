@@ -6,7 +6,7 @@ import "/Users/nicholegodfrey/cs180/bitequest/global.css";
  
 export default function Profile() {
   return (
-    <ScrollView className="flex-1 bg-[#EEF9F9]">
+    <ScrollView className="flex-grow bg-[#EEF9F9] overflow-visible" >
       <View className="mt-20 relative" style={{ alignSelf: 'center' }}>
         <Image 
           source={require('../../assets/images/profile-pic.png')}
@@ -25,7 +25,7 @@ export default function Profile() {
         Location:
       </Text>
     <View className="px-12 mt-8 justify-center space-y-3 pb-10">
-      <Text className="text-4xl justify-left text-[#723D46] font-balooregular">
+      <Text className="text-4xl justify-left text-[#723D46] font-balooregular leading-tight" >
         Reviews
       </Text>
       <Image 
@@ -50,9 +50,15 @@ export default function Profile() {
           view all →
         </Text>
       </View>
-      <Text className="text-4xl mt-10 justify-left text-[#723D46] font-balooregular">
+      {/* badges is being cut off how to fix? */}
+    
+      <View className="flex-grow">
+      <Text className="text-4xl mt-10 justify-left text-[#723D46] font-balooregular leading-tight">
         Badges
       </Text>
+     </View>
+      
+     
       <Image 
         source={require('../../assets/images/badges.png')}
         style={{ alignSelf: 'center' }}
