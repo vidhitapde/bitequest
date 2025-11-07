@@ -1,40 +1,13 @@
-import "../../global.css"
-import { Platform, View, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import "../global.css"
+import { View } from "react-native";
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { Textarea } from "@/components/ui/textarea"
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import * as Haptics from 'expo-haptics';
-import React from "react";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
  
 export default function LogIn() {
-    const [showPassword, setShowPassword] = React.useState(false);
-
-    const [state, setState] = React.useState({
-        rememberMe: false,
-    });
-
-
-    function toggleCheckedState(key: keyof typeof state) {
-    return () => {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      setState((prev) => ({
-        ...prev,
-        [key]: !prev[key],
-      }));
-    };
-  }
-
   return (
     <View className = "flex-1 bg-[#FEFAE0]">
         <View className="mt-20 w-5/6 mx-auto">

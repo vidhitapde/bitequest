@@ -95,6 +95,7 @@ export default function Profile() {
           </Text>
         </View>
       </View>
+      </View>
     </ScrollView>
   );
 }
