@@ -1,33 +1,57 @@
-import { Button, StyleSheet } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 
-import { View } from "@/components/Themed";
+import React from "react";
+
+import "../../global.css";
 
 export default function ShopScreen() {
   return (
-    <View style={styles.container}>
-      <Button
-        className="bg-white rounded-lg "
-        title="Shop"
-        onPress={() => alert("Button pressed!")}
+    <ScrollView className="flex-grow bg-[#D4A373] overflow-visible" >
+      <View className ="self-center" style = {{width: '200%'}}>
+        <Image
+        source = {require("../../assets/images/top.png")}
+        style = {{
+          width:'100%',
+          height:undefined,
+          resizeMode: 'contain',
+          aspectRatio: 3.27,
+        }}
+        />
+      </View>
+    <View className="flex-row items-center justify-center mt-12">
+      <Image 
+        source={require('../../assets/images/shopitem.png')}
+        resizeMode="contain"
+      />
+      <Image 
+      className="ml-4"
+        source={require('../../assets/images/shopitem.png')}
+        resizeMode="contain"
+      />
+      <Image 
+      className="ml-4"
+        source={require('../../assets/images/shopitem.png')}
+        resizeMode="contain"
       />
     </View>
+
+    <View className="flex-row items-center justify-center mt-11">
+      <Image 
+        source={require('../../assets/images/shopitem.png')}
+        resizeMode="contain"
+      />
+      <Image 
+      className="ml-4"
+        source={require('../../assets/images/shopitem.png')}
+        resizeMode="contain"
+      />
+      <Image 
+      className="ml-4"
+        source={require('../../assets/images/shopitem.png')}
+        resizeMode="contain"
+      />
+    </View> 
+    
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#FEFAE0",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
