@@ -1,6 +1,6 @@
+import "../global.css";
 import { useRouter } from 'expo-router';
 import { Button, Text, View } from "react-native";
-import "../global.css";
 import React, {useEffect} from 'react';
 import { useFonts } from 'expo-font';
  
@@ -19,7 +19,7 @@ export default function Loading() {
   
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.replace('/(tabs)/login');
+      router.replace('/welcome');
     }, 1500); 
     return () => clearTimeout(timer);
   },[router]);

@@ -1,14 +1,16 @@
-import "../../global.css"
-import {View } from "react-native";
+import "../global.css"
+import {View, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import { useRouter } from 'expo-router';
 import React from "react";
 
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = React.useState(false);
+    const router = useRouter();
 
   return (
     <View className = "flex-1 bg-[#E9EDC9] content-center">
@@ -81,10 +83,15 @@ export default function SignUp() {
                     </View>
                 </View>
             </View>
-            <Button>
+            <Button onPress={() => router.push('/(tabs)/map')}>
                 <Text className ="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">Create Account</Text>
             </Button>
-            <Text className="text-center">Already have an account? Log in here</Text>
+            <View className="flex-row justify-center">
+                <Text>Already have an account? Log in </Text>
+                <Pressable onPress={() => router.push('/login')}>
+                    <Text className ="text-blue-600 font-bold">here</Text>
+                </Pressable>
+            </View>
         </View>
     </View>
   );
