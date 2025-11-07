@@ -1,44 +1,19 @@
 import "../../global.css"
-import { Platform, View, StyleSheet } from "react-native";
+import {View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import * as Haptics from 'expo-haptics';
 import React from "react";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
- 
+
 export default function SignUp() {
     const [showPassword, setShowPassword] = React.useState(false);
 
-    const [state, setState] = React.useState({
-        rememberMe: false,
-    });
-
-
-    function toggleCheckedState(key: keyof typeof state) {
-    return () => {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      setState((prev) => ({
-        ...prev,
-        [key]: !prev[key],
-      }));
-    };
-  }
-
   return (
     <View className = "flex-1 bg-[#E9EDC9] content-center">
-        <View className="mt-10">
-            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46] mt-16">Sign Up</Text>
+        <View className="mt-40">
+            <Text className="text-center text-5xl font-baloo2 p-6 text-[#723D46]">Sign Up</Text>
             <Text className="text-center mb-6 mx-6">Create an account to explore BiteQuest.</Text>
             <View className="flex justify-center mx-auto w-5/6 m-6 gap-4">
                 <Input
