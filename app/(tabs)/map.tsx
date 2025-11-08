@@ -1,3 +1,4 @@
+import "../../global.css";
 import { Ionicons } from "@expo/vector-icons";
 import {
   Image,
@@ -8,8 +9,11 @@ import {
   View,
 } from "react-native";
 import MapView from "react-native-maps";
-import "../../global.css";
+import { useRouter } from "expo-router";
+
 export default function MapScreen() {
+  const router = useRouter();
+
   return (
     <ImageBackground
       source={require("../../assets/images/background.png")}
@@ -82,7 +86,7 @@ export default function MapScreen() {
               borderColor: "#723D46",
               borderWidth: 3,
             }}
-            onPress={() => console.log("ok cute")}
+            onPress={() => router.push("/review")}
           >
             <Text
               style={{

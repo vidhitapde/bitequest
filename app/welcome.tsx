@@ -10,7 +10,7 @@ export default function LogIn() {
   return (
     <View className="flex-1 bg-[#E9EDC9] justify-center">
 
-        <Text className="text-6xl font-baloo2 text-center p-4">
+        <Text className="text-6xl text-[#723D46] font-baloo2 text-center p-4">
           Welcome!
         </Text>
         <Button onPress={() => router.push("/signup")}>
