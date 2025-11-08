@@ -4,6 +4,7 @@ import React from "react";
 import { Pressable } from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
@@ -32,8 +33,6 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         tabBarStyle: { backgroundColor: "#723D46" },
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
         headerShown: false,
       }}
     >
@@ -52,8 +51,17 @@ export default function TabLayout() {
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="map" size={30} style={{ marginBottom: -24 }} color={color}  />
+            <FontAwesome name="map" size={30} style={{ marginBottom: -23 }} color={color}  />
           ),
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name = "closet"
+        options={{
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="hanger" size={33} style={{ marginBottom: -21 }} color={color} />          ),
           headerShown: false,
         }}
       />
