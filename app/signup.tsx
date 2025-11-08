@@ -1,15 +1,34 @@
-import "../global.css";
-import { View, Pressable } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
 import { Input } from "@/components/ui/input";
+import { Text } from "@/components/ui/text";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
 import React from "react";
+import { Pressable, View } from "react-native";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = React.useState(false);
   const router = useRouter();
+
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [loading, setLoading] = useState(false);
+  // const auth = FB_AUTH;
+
+  // const signUp = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await createUserWithEmailAndPassword(auth, email, password);
+  //     console.log(response);
+  //     alert('Check your emails!');
+  //   } catch (error: any) {
+  //     console.log(error);
+  //     alert('Registration failed: ' + error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   return (
     <View className="flex-1 bg-[#E9EDC9] content-center">
@@ -34,6 +53,9 @@ export default function SignUp() {
             autoComplete="email"
             placeholder="Email"
             className="p-4 rounded-full bg-white"
+            // value={email}
+            // autoCapitalize="none"
+            // onChangeText={(text) => setEmail(text)}
           />
           <View className="relative">
             <Input
@@ -43,6 +65,9 @@ export default function SignUp() {
               returnKeyType="done"
               textContentType="password"
               className="p-4 rounded-full bg-white"
+              // value={password}
+              // autoCapitalize="none"
+              // onChangeText={(text) => setPassword(text)}
             />
             <View className="absolute right-2 top-1/2 transform -translate-y-1/2">
               <Button
@@ -86,7 +111,12 @@ export default function SignUp() {
             </View>
           </View>
         </View>
-        <Button onPress={() => router.push("/(tabs)/map")}>
+        <Button onPressIn={() => router.push("/(tabs)/map")}>
+          {/* onPress={async () => {
+            await signUp();
+            router.push("/(tabs)/map");
+          }}
+        > */}
           <Text className="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
             Create Account
           </Text>

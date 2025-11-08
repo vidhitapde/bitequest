@@ -1,22 +1,41 @@
-import "../global.css";
-import { Platform, View, Pressable } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
-import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useRouter } from "expo-router";
+import { Text } from "@/components/ui/text";
+import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
+import { useRouter } from "expo-router";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 import React from "react";
+import { Platform, Pressable, View } from "react-native";
 
 export default function LogIn() {
   const router = useRouter();
+
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [loading, setLoading] = useState(false);
+  // const auth = FB_AUTH;
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const [state, setState] = React.useState({
     rememberMe: false,
   });
+
+  // const signIn = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await signInWithEmailAndPassword(auth, email, password);
+  //     console.log(response);
+  //   } catch (error: any) {
+  //     console.log(error);
+  //     alert('Login failed: ' + error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   function toggleCheckedState(key: keyof typeof state) {
     return () => {
@@ -44,6 +63,9 @@ export default function LogIn() {
             autoComplete="email"
             placeholder="Email"
             className="p-4 rounded-full bg-white"
+            // value={email}
+            // autoCapitalize="none"
+            // onChangeText={(text) => setEmail(text)}
           />
           <View className="relative">
             <Input
@@ -53,6 +75,9 @@ export default function LogIn() {
               returnKeyType="done"
               textContentType="password"
               className="p-4 rounded-full bg-white"
+              // value={password}
+              // autoCapitalize="none"
+              // onChangeText={(text) => setPassword(text)}
             />
             <View className="absolute right-2 top-1/2 transform -translate-y-1/2">
               <Button
@@ -92,6 +117,11 @@ export default function LogIn() {
           </View>
         </View>
         <Button onPress={() => router.push("/(tabs)/map")}>
+          {/* onPress={async () => {
+            await signIn();
+            router.push("/(tabs)/map");
+          }}
+        > */}
           <Text className="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
             Login
           </Text>
