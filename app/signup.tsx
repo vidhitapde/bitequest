@@ -1,15 +1,39 @@
-import "../global.css";
-import { View, Pressable } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
 import { Input } from "@/components/ui/input";
+import { Text } from "@/components/ui/text";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import React from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import React, { useState } from "react";
+import { Pressable, View } from "react-native";
+import { FB_AUTH } from "../firebaseConfig";
+import "../global.css";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = React.useState(false);
   const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const auth = FB_AUTH;
+
+  const signUp = async () => {
+    if  (password !== confirmPassword) {
+      alert("Passwords do not match. Please try again.");
+      return;
+    }
+    try {
+      const response = await createUserWithEmailAndPassword(auth, email, password);
+      updateProfile(response.user, { displayName: name });
+      console.log("User created successfully: ", response.user);
+      router.push("/(tabs)/map");
+      alert("Account created successfully! Welcome, " + name + "!");
+    } catch (error) {
+      console.error("Error signing up: ", error);
+      alert("Failed to sign in. Please check your credentials and try again.");
+    }
+  }
 
   return (
     <View className="flex-1 bg-[#E9EDC9] content-center">
@@ -27,6 +51,9 @@ export default function SignUp() {
             autoComplete="name"
             placeholder="Name"
             className="p-4 rounded-full bg-white"
+            value={name}
+            autoCapitalize="none"
+            onChangeText={(text) => setName(text)}
           />
           <Input
             keyboardType="email-address"
@@ -34,6 +61,9 @@ export default function SignUp() {
             autoComplete="email"
             placeholder="Email"
             className="p-4 rounded-full bg-white"
+            value={email}
+            autoCapitalize="none"
+            onChangeText={(text) => setEmail(text)}
           />
           <View className="relative">
             <Input
@@ -43,6 +73,9 @@ export default function SignUp() {
               returnKeyType="done"
               textContentType="password"
               className="p-4 rounded-full bg-white"
+              value={password}
+              autoCapitalize="none"
+              onChangeText={(text) => setPassword(text)}
             />
             <View className="absolute right-2 top-1/2 transform -translate-y-1/2">
               <Button
@@ -68,6 +101,9 @@ export default function SignUp() {
               returnKeyType="done"
               textContentType="password"
               className="p-4 rounded-full bg-white"
+              value={confirmPassword}
+              autoCapitalize="none"
+              onChangeText={(text) => setConfirmPassword(text)}
             />
             <View className="absolute right-2 top-1/2 transform -translate-y-1/2">
               <Button
@@ -85,8 +121,11 @@ export default function SignUp() {
               </Button>
             </View>
           </View>
+          <Text className="text-left mb-6 mx-6">
+            Password must be at least 6 characters long.
+          </Text>
         </View>
-        <Button onPress={() => router.push("/(tabs)/map")}>
+        <Button onPress={signUp}>
           <Text className="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
             Create Account
           </Text>

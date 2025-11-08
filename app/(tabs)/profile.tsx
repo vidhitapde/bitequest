@@ -1,9 +1,5 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
-
-import React from "react";
-
-
 import "../../global.css";
 export default function Profile() {
  return (
