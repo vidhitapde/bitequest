@@ -9,6 +9,9 @@ dist/
 web-build/
 expo-env.d.ts
 
+#firebaseConfig.js
+firebaseConfig.js
+
 # Native
 .kotlin/
 *.orig.*

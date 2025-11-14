@@ -85,7 +85,7 @@ export default function LogIn() {
               >
                 <Text className="text-muted-foreground">
                   <Ionicons
-                    name={showPassword ? "eye-off" : "eye"}
+                    name={showPassword ? "eye" : "eye-off"}
                     size={24}
                     color="gray"
                   />
