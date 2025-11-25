@@ -9,21 +9,19 @@ export default function LogIn() {
 
   return (
     <View className="flex-1 bg-[#E9EDC9] justify-center">
-
-        <Text className="text-6xl text-[#723D46] font-baloo2 text-center p-4">
-          Welcome!
+      <Text className="text-6xl text-[#723D46] font-baloo2 text-center p-4">
+        Welcome!
+      </Text>
+      <Button onPress={() => router.push("/signup")}>
+        <Text className="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
+          Sign Up
         </Text>
-        <Button onPress={() => router.push("/signup")}>
-          <Text className="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
-            Sign Up
-          </Text>
-        </Button>
-        <Button onPress={() => router.push("/login")}>
-          <Text className="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
-            Login
-          </Text>
-        </Button>
-
+      </Button>
+      <Button onPress={() => router.push("/login")}>
+        <Text className="bg-[#723D46] m-6 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
+          Login
+        </Text>
+      </Button>
     </View>
   );
 }

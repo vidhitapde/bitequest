@@ -33,7 +33,7 @@ export default function LogIn() {
       console.error("Error signing in: ", error);
       alert("Failed to sign in. Please check your credentials and try again.");
     }
-  }
+  };
 
   function toggleCheckedState(key: keyof typeof state) {
     return () => {

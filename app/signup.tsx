@@ -19,12 +19,16 @@ export default function SignUp() {
   const auth = FB_AUTH;
 
   const signUp = async () => {
-    if  (password !== confirmPassword) {
+    if (password !== confirmPassword) {
       alert("Passwords do not match. Please try again.");
       return;
     }
     try {
-      const response = await createUserWithEmailAndPassword(auth, email, password);
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       updateProfile(response.user, { displayName: name });
       console.log("User created successfully: ", response.user);
       router.push("/(tabs)/map");
@@ -33,7 +37,7 @@ export default function SignUp() {
       console.error("Error signing up: ", error);
       alert("Failed to sign in. Please check your credentials and try again.");
     }
-  }
+  };
 
   return (
     <View className="flex-1 bg-[#E9EDC9] content-center">
