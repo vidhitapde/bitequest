@@ -4,27 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "expo-router";
-import {FB_AUTH} from "../firebaseConfig";
+import { FB_AUTH } from "../firebaseConfig";
 import { sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
 
-
-export default function ForgotPassword()
-{
+export default function ForgotPassword() {
   const router = useRouter();
-  const[email,setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const auth = FB_AUTH;
-  const resetPassword = async() => {
+  const resetPassword = async () => {
     try {
-      await sendPasswordResetEmail(auth,email);
+      await sendPasswordResetEmail(auth, email);
       console.log("Password reset email sent successfully");
       router.push("/(tabs)/map");
-    }
-    catch(error)
-    {
+    } catch (error) {
       console.error("Error sending password reset email: ", error);
     }
-
   };
   return (
     <View className="flex-1 bg-[#E9EDC9] content-center">
@@ -43,10 +38,12 @@ export default function ForgotPassword()
             autoComplete="email"
             placeholder="Email"
             className="p-4 rounded-full bg-white"
-            value= {email}
-            onChangeText = {setEmail}
+            value={email}
+            onChangeText={setEmail}
           />
-          <Button onPress={resetPassword}> Reset Password
+          <Button onPress={resetPassword}>
+            {" "}
+            Reset Password
             <Text className="bg-[#723D46] m-6 mt-20 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
               Continue
             </Text>

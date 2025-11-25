@@ -2,10 +2,9 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Link, Tabs } from "expo-router";
 import React from "react";
 import { Pressable } from "react-native";
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Feather from '@expo/vector-icons/Feather';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Feather from "@expo/vector-icons/Feather";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -17,7 +16,7 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -25 }} {...props}/>;
+  return <FontAwesome size={30} style={{ marginBottom: -25 }} {...props} />;
 }
 
 export default function TabLayout() {
@@ -37,40 +36,61 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name = "shop"
+        name="shop"
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => (
-            <AntDesign name="shop" size={30} style={{ marginBottom: -24 }} color={color} />
+            <AntDesign
+              name="shop"
+              size={30}
+              style={{ marginBottom: -24 }}
+              color={color}
+            />
           ),
           headerShown: false,
         }}
       />
       <Tabs.Screen
-        name = "map"
+        name="map"
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="map" size={30} style={{ marginBottom: -23 }} color={color}  />
+            <FontAwesome
+              name="map"
+              size={30}
+              style={{ marginBottom: -23 }}
+              color={color}
+            />
           ),
           headerShown: false,
         }}
       />
       <Tabs.Screen
-        name = "closet"
+        name="closet"
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="hanger" size={33} style={{ marginBottom: -21 }} color={color} />          ),
+            <MaterialCommunityIcons
+              name="hanger"
+              size={33}
+              style={{ marginBottom: -21 }}
+              color={color}
+            />
+          ),
           headerShown: false,
         }}
       />
       <Tabs.Screen
-        name = "profile"
+        name="profile"
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => (
-            <Feather name="user" size={30} style={{ marginBottom: -24 }} color={color}  />
+            <Feather
+              name="user"
+              size={30}
+              style={{ marginBottom: -24 }}
+              color={color}
+            />
           ),
           headerShown: false,
         }}
