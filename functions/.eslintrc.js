@@ -27,4 +27,13 @@ module.exports = {
     "import/no-unresolved": 0,
     indent: ["error", 2],
   },
+  overrides: [
+    {
+      files: ["metro.config.js", "babel.config.js", "jest.config.js", "tailwind.config.js","*.config.js","*.config.cjs"],
+      rules: {
+        "@typescript-eslint/no-require-impots": "off",
+      }
+
+    }
+  ]
 };
