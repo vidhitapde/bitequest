@@ -29,7 +29,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["metro.config.js", "babel.config.js", "jest.config.js", "tailwind.config.js","*.config.js","*.config.cjs"],
+      files: ["**/metro.config.js", "**/babel.config.js", "**/jest.config.js", "**/tailwind.config.js"],
       rules: {
         "@typescript-eslint/no-require-impots": "off",
       }
