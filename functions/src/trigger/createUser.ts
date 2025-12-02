@@ -3,13 +3,12 @@ import * as admin from "firebase-admin";
 
 import { defaultAvatar } from "../types/Avatar";
 
-admin.initializeApp();
-const db = admin.firestore();
+import { FB_DB} from "../../../firebaseConfig.js";
 
 export const createUserProfile = functions.auth
   .user()
   .onCreate(async (user) => {
-    const userRef = db.collection("users").doc(user.uid);
+    const userRef = FB_DB.collection("users").doc(user.uid);
 
     const newUser = {
       email: user.email,
