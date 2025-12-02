@@ -1,8 +1,8 @@
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from "firebase/firestore";
-import React, { useState, useEffect } from "react";
-import { FB_AUTH, FB_DB,GOOGLE } from "../../../firebaseConfig.js";
 import { router } from "expo-router";
-
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useUser } from "../../../app/appprovider";
+import { FB_AUTH, FB_DB, GOOGLE } from "../../../firebaseConfig.js";
 
 export default function useReview() {
     const [rating, setRating] = useState(0);
@@ -13,7 +13,8 @@ export default function useReview() {
     const [searchResults, setSearchResults] = useState<any[]>([]);
     const [showResults, setShowResults] = useState(false);
     const auth = FB_AUTH;
-    const user = auth.currentUser;
+    // const user = auth.currentUser;
+    const { user } = useUser();
     const reviewsCollection = collection(FB_DB, 'reviews');
 
 

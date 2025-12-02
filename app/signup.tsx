@@ -7,7 +7,9 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { Pressable, View } from "react-native";
 import { FB_AUTH } from "../firebaseConfig";
+import { User, UserRepo } from "../functions/src/types/User";
 import "../global.css";
+import { useUser } from "./appprovider";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -16,6 +18,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { setUser } = useUser();
   const auth = FB_AUTH;
 
   const signUp = async () => {
@@ -29,6 +32,10 @@ export default function SignUp() {
         email,
         password,
       );
+      const uid = response.user.uid;
+      const user = new User(uid, email, name);
+      await UserRepo.save(user);
+      setUser(user);
       updateProfile(response.user, { displayName: name });
       console.log("User created successfully: ", response.user);
       router.push("/(tabs)/map");

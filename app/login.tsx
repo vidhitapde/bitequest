@@ -10,13 +10,16 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Platform, Pressable, View } from "react-native";
 import { FB_AUTH } from "../firebaseConfig";
+import { User, UserRepo } from "../functions/src/types/User";
 import "../global.css";
+import { useUser } from "./appprovider";
 
 export default function LogIn() {
   const router = useRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useUser();
   const auth = FB_AUTH;
 
   const [state, setState] = React.useState({
@@ -26,6 +29,17 @@ export default function LogIn() {
   const signIn = async () => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
+      if (!response.user) console.log("FAILED SIGN IN")
+      const user = await UserRepo.load(response.user.uid);
+      if (!user) {
+        const uid = response.user.uid;
+        const name = response.user.displayName ?? "";
+        const newUser = new User(uid, email, name);
+        await UserRepo.save(newUser);
+        setUser(newUser);
+      } else {
+        setUser(user);
+      }
       console.log("User signed in successfully: ", response.user);
       router.push("/(tabs)/map");
       alert("Welcome back, " + response.user.displayName + "!");

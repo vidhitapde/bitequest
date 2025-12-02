@@ -1,8 +1,8 @@
-import "../global.css";
-import { useRouter } from "expo-router";
-import { Button, Text, View } from "react-native";
-import React, { useEffect } from "react";
 import { useFonts } from "expo-font";
+import { useRouter } from "expo-router";
+import React, { useEffect } from "react";
+import { Text, View } from "react-native";
+import "../global.css";
 
 export const screenOptions = {
   headerShown: false,

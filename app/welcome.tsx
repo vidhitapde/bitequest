@@ -1,8 +1,9 @@
-import "../global.css";
-import { View } from "react-native";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { useRouter } from "expo-router";
+import React from "react";
+import { View } from "react-native";
+import "../global.css";
 
 export default function LogIn() {
   const router = useRouter();
