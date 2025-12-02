@@ -1,4 +1,4 @@
-import { FB_AUTH, FB_DB } from "@/firebaseConfig";
+import {GOOGLE, FB_AUTH, FB_DB } from "@/firebaseConfig";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -13,8 +13,6 @@ import {
 } from "react-native";
 import Svg, { G, Path } from 'react-native-svg';
 import "../../global.css";
-import "../.env";
-
 const { californiaCounties } = require('../geojson2svg');
 
   export default function MapScreen() {
@@ -74,7 +72,7 @@ const { californiaCounties } = require('../geojson2svg');
     const getCountyFromAddress = async (restaurantName: string) => {
       try {
         const response = await fetch(
-          `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(restaurantName + ' California')}&key=API_KEY`
+          `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(restaurantName + ' California')}&key=${GOOGLE}`
         );
         const data = await response.json();
         
