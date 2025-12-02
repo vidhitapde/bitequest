@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import Svg, { G, Path } from 'react-native-svg';
 import "../../global.css";
+import "../.env";
 
 const { californiaCounties } = require('../geojson2svg');
 
@@ -73,7 +74,7 @@ const { californiaCounties } = require('../geojson2svg');
     const getCountyFromAddress = async (restaurantName: string) => {
       try {
         const response = await fetch(
-          `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(restaurantName + ' California')}&key=AIzaSyAYehfhYVP0inq67-kE-7BZKMn-RHsn8c4`
+          `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(restaurantName + ' California')}&key=API_KEY`
         );
         const data = await response.json();
         

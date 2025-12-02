@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
 import { FB_AUTH, FB_DB } from "../firebaseConfig";
 import "../global.css";
+import "../.env";
 
 export default function Review() {
   const [rating, setRating] = useState(0);
@@ -47,7 +48,7 @@ export default function Review() {
 
     try {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(text)}&types=restaurant&key=AIzaSyAYehfhYVP0inq67-kE-7BZKMn-RHsn8c4`
+        `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(text)}&types=restaurant&key=API_KEY`
       );
       const data = await response.json();
       
