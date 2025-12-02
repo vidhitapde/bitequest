@@ -1,63 +1,33 @@
-import "../global.css";
-import { View } from "react-native";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { Textarea } from "@/components/ui/textarea";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from "firebase/firestore";
-import React, { useState, useEffect } from "react";
-import { FB_AUTH } from "../firebaseConfig";
-import { FB_DB } from "../firebaseConfig";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { router } from "expo-router";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
+import { FB_AUTH, FB_DB } from "../firebaseConfig";
+import useReview from "../functions/src/types/useReview";
+import "../global.css";
 
 export default function Review() {
-  const [rating, setRating] = useState(0);
-  const [reviewText, setReviewText] = useState('');
-  const [review, setReview] = useState<any>([]);
-  const auth = FB_AUTH;
-  const user = auth.currentUser;
-  const reviewsCollection = collection(FB_DB, 'reviews');
-
-  useEffect(() => {
-    fetchReview();
-  }, [user]);
-
-  const fetchReview = async () => {
-    if (user) {
-      const q = query(reviewsCollection, where('userId', "==", user.uid));
-      const data = await getDocs(q);
-      const userReviews = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      console.log(userReviews);
-      setReview(userReviews);
-    }
-    else {
-      console.log("No user information found, not logged in");
-    }
-  }
-  const addReview = async () => {
-    if (user) {
-      await addDoc(reviewsCollection, { rating, reviewText, userId: user.uid });
-      setRating(0);
-      setReviewText('');
-      fetchReview();
-
-    }
-    else {
-      console.log("No user logged in");
-    }
-  }
-
-  // const updateReview = async(id: string) =>
-  // {
-  //   const reviewDoc = doc(FB_DB, 'reviews', id);
-  //   fetchReview();
-  // }
-
-  // const deleteReview  = async(id: string) => {
-  //   const reviewDoc = doc(FB_DB, 'reviews', id);
-  //   await deleteDoc(reviewDoc);
-  //   fetchReview();
-  // }
+  const {
+    rating,
+    setRating,
+    reviewText,
+    setReviewText,
+    reviews,
+    addReview,
+    fetchReview,
+    selectedRestaurant,
+    searchText,
+    showResults,
+    searchResults,
+    setSearchText,
+    searchRestaurants,
+    selectRestaurant,
+  } = useReview();
 
 
   return (
@@ -71,8 +41,52 @@ export default function Review() {
             className="bg-blue-400 p-4 text-center rounded-full w-fit"
           />
           <Text className="ml-10 text-3xl font-baloo2 text-[#723D46]">
-            Restaurant name
+            {selectedRestaurant}
           </Text>
+        </View>
+
+        <View className="mt-6 mb-4">
+          <Text className="text-center font-baloo2 text-2xl mt-2 mb-2">
+            Search for a restaurant
+          </Text>
+          <View className="relative">
+            <TextInput
+              placeholder="Search for restaurants..."
+              value={searchText}
+              onChangeText={(text) => {
+                setSearchText(text);
+                searchRestaurants(text);
+              }}
+              className="border-2 border-gray-400 bg-white rounded-md p-2"
+            />
+            {showResults && searchResults.length > 0 && (
+              <FlatList
+                data={searchResults}
+                keyExtractor={(item) => item.place_id}
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 8,
+                  marginTop: 4,
+                  maxHeight: 200,
+                }}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    onPress={() => selectRestaurant(item)}
+                    style={{
+                      backgroundColor: 'white',
+                      padding: 13,
+                      minHeight: 44,
+                      borderBottomWidth: 1,
+                    }}
+                  >
+                    <Text className="text-black text-sm">
+                      {item.description}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              />
+            )}
+          </View>
         </View>
         <Text className="text-center font-baloo2 text-2xl mt-8 mb-2">
           Leave a rating
