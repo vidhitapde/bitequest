@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 
 import { defaultAvatar } from "../types/Avatar";
 
-import { FB_DB} from "../../../firebaseConfig.js";
+import { FB_DB } from "../../../firebaseConfig.js";
 
 export const createUserProfile = functions.auth
   .user()

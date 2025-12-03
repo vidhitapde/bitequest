@@ -17,7 +17,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary
+  ErrorBoundary,
 } from "expo-router";
 
 export const unstable_settings = {
@@ -62,7 +62,10 @@ function RootLayoutNav() {
           <Stack.Screen name="welcome" options={{ headerShown: false }} />
           <Stack.Screen name="login" options={{ headerShown: false }} />
           <Stack.Screen name="signup" options={{ headerShown: false }} />
-          <Stack.Screen name="forgotpassword" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="forgotpassword"
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="review" options={{ headerShown: false }} />

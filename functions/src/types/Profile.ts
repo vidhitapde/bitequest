@@ -16,7 +16,7 @@ export class Profile {
     return new Profile(
       raw.displayName,
       raw.avatar,
-      raw.reviews?.map((r:any) => Review.fromObject(r)) ?? [],
+      raw.reviews?.map((r: any) => Review.fromObject(r)) ?? [],
     );
   }
 
@@ -24,7 +24,7 @@ export class Profile {
     return {
       displayName: this.displayName,
       avatar: this.avatar,
-      reviews: this.reviews.map(r => r.serialize()),
+      reviews: this.reviews.map((r) => r.serialize()),
     };
   }
 }
