@@ -1,8 +1,10 @@
-import { router } from "expo-router";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, deleteDoc, collection, getDocs, query, where, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useUser } from "../../../app/appprovider";
-import { FB_AUTH, FB_DB, GOOGLE } from "../../../firebaseConfig.js";
+import { FB_DB, GOOGLE, FB_STORAGE } from "../../../firebaseConfig.js";
+import { router } from "expo-router";
+import { Alert, Button, Image, View, StyleSheet } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function useReview() {
   const [rating, setRating] = useState(0);
@@ -13,8 +15,8 @@ export default function useReview() {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [showResults, setShowResults] = useState(false);
-  const auth = FB_AUTH;
-  // const user = auth.currentUser;
+  const [photoUri, setPhotoUri] = useState<string | null>(null);
+
   const { user } = useUser();
   const reviewsCollection = collection(FB_DB, "reviews");
 
@@ -32,10 +34,36 @@ export default function useReview() {
       }));
       console.log(userReviews);
       setReview(userReviews);
+
     } else {
       console.log("No user information found, not logged in");
     }
   };
+  const pickImage = async () => {
+    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (!permissionResult.granted) {
+      Alert.alert('Permission required', 'Permission to access the media library is required.');
+      return;
+    }
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images', 'videos'],
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setPhotoUri(result.assets[0].uri);
+    }
+  };
+
+
+
+  // };
   //    const addReview = async () => {
   //        if (user) {
   //            await addDoc(reviewsCollection, { rating, reviewText, userId: user.uid });
@@ -79,39 +107,52 @@ export default function useReview() {
   };
 
   const addReview = async () => {
-    if (user) {
-      await addDoc(reviewsCollection, {
-        rating,
-        reviewText,
-        userId: user.uid,
-        restaurantName: selectedRestaurant,
-        restaurantFullAddress: searchText,
-      });
-      setRating(0);
-      setReviewText("");
-      fetchReview();
-      router.push("/(tabs)/map");
-    } else {
-      console.log("No user logged in");
-    }
+
+    //   if (user) {
+    //     if (photoUri) {
+    //       try {
+    //         imageUrl = await uploadReviewImage(photoUri);
+    //       }
+    //  }
+    await addDoc(reviewsCollection, {
+      rating,
+      reviewText,
+      userId: user.uid,
+      restaurantName: selectedRestaurant,
+      restaurantFullAddress: searchText,
+      // imageUrl: imageUrl,
+    });
+    setRating(0);
+    setReviewText("");
+    fetchReview();
+    router.push("/(tabs)/map");
   };
 
-  return {
-    rating,
-    setRating,
-    reviewText,
-    setReviewText,
-    reviews,
-    addReview,
-    fetchReview,
-    selectedRestaurant,
-    searchText,
-    showResults,
-    searchResults,
-    setSearchText,
-    searchRestaurants,
-    selectRestaurant,
-  };
+const deleteReview = async (id: string) => {
+  const reviewDoc = doc(FB_DB, 'reviews', id);
+  await deleteDoc(reviewDoc);
+  fetchReview();
+};
+
+return {
+  rating,
+  setRating,
+  reviewText,
+  setReviewText,
+  reviews,
+  addReview,
+  fetchReview,
+  selectedRestaurant,
+  searchText,
+  showResults,
+  searchResults,
+  setSearchText,
+  searchRestaurants,
+  selectRestaurant,
+  deleteReview,
+  photoUri,
+  pickImage,
+};
 
   // const updateReview = async(id: string) =>
   // {
@@ -119,9 +160,5 @@ export default function useReview() {
   //   fetchReview();
   // }
 
-  // const deleteReview  = async(id: string) => {
-  //   const reviewDoc = doc(FB_DB, 'reviews', id);
-  //   await deleteDoc(reviewDoc);
-  //   fetchReview();
-  // }
+
 }

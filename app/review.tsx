@@ -15,6 +15,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Image,
 } from "react-native";
 import { FB_AUTH, FB_DB } from "../firebaseConfig";
 import useReview from "../functions/src/types/useReview";
@@ -36,6 +37,8 @@ export default function Review() {
     setSearchText,
     searchRestaurants,
     selectRestaurant,
+    pickImage,
+    photoUri
   } = useReview();
   const router = useRouter();
 
@@ -142,16 +145,26 @@ export default function Review() {
                     />
                   </View>
                 </TouchableWithoutFeedback>
-
-                <Button onPress={addReview}>
+                <Button onPress={pickImage}>
                   <Text className="bg-[#723D46] m-6 mt-12 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
-                    Post
+                    Upload Photo
                   </Text>
                 </Button>
-              </View>
+
+                {photoUri && (
+                <Image source={{ uri: photoUri }} 
+                style={{ width: 100, height: 100, borderRadius: 10 }} 
+                /> )}
+
+                  <Button onPress={addReview}>
+                    <Text className="bg-[#723D46] m-6 mt-12 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
+                      Post
+                    </Text>
+                  </Button>
+                </View>
             }
           />
-        </KeyboardAvoidingView>
+              </KeyboardAvoidingView>
       </View>
     </View>
   );
