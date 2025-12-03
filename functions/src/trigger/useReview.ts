@@ -34,6 +34,7 @@ export default function useReview() {
       setReview(userReviews);
       user.balance += 20;
       user.profile.reviews.push(userReviews);
+    
     } else {
       console.log("No user information found, not logged in");
     }
