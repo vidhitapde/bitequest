@@ -1,32 +1,32 @@
-const {GeoJSON2SVG} = require('geojson2svg');
+const { GeoJSON2SVG } = require("geojson2svg");
 
 const converter = new GeoJSON2SVG({
   mapExtent: {
     left: -124.5,
     bottom: 32.5,
     right: -114.0,
-    top: 42.0
+    top: 42.0,
   },
-  viewportSize: {width: 800, height: 1000},
+  viewportSize: { width: 800, height: 1000 },
   attributes: {
-    'style': 'fill:#ECF8F8;stroke:#723D46;stroke-width:2',
-    'vector-effect': 'non-scaling-stroke'
-  }
+    style: "fill:#ECF8F8;stroke:#723D46;stroke-width:2",
+    "vector-effect": "non-scaling-stroke",
+  },
 });
 const geojsonData = {
-  "type": "FeatureCollection",
-  "features": [
+  type: "FeatureCollection",
+  features: [
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Alameda",
-        "cartodb_id": 1,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Alameda",
+        cartodb_id: 1,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-122.312934, 37.897333],
@@ -142,8 +142,8 @@ const geojsonData = {
               [-122.29647, 37.829977],
               [-122.302754, 37.861282],
               [-122.317044, 37.889191],
-              [-122.312934, 37.897333]
-            ]
+              [-122.312934, 37.897333],
+            ],
           ],
           [
             [
@@ -160,23 +160,23 @@ const geojsonData = {
               [-122.278, 37.768505],
               [-122.284174, 37.767423],
               [-122.30887, 37.776174],
-              [-122.327913, 37.781195]
-            ]
-          ]
-        ]
-      }
+              [-122.327913, 37.781195],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Alpine",
-        "cartodb_id": 2,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Alpine",
+        cartodb_id: 2,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.072392, 38.702767],
             [-119.964948, 38.775986],
@@ -267,22 +267,22 @@ const geojsonData = {
             [-120.072566, 38.447081],
             [-120.07252, 38.624909],
             [-120.072382, 38.701282],
-            [-120.072392, 38.702767]
-          ]
-        ]
-      }
+            [-120.072392, 38.702767],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Amador",
-        "cartodb_id": 3,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Amador",
+        cartodb_id: 3,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.027262, 38.489252],
             [-121.027406, 38.50354],
@@ -450,22 +450,22 @@ const geojsonData = {
             [-120.972104, 38.217951],
             [-120.995497, 38.225405],
             [-121.027084, 38.300252],
-            [-121.027262, 38.489252]
-          ]
-        ]
-      }
+            [-121.027262, 38.489252],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Butte",
-        "cartodb_id": 4,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Butte",
+        cartodb_id: 4,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.879249, 39.303608],
             [-121.908312, 39.303916],
@@ -690,22 +690,22 @@ const geojsonData = {
             [-121.624655, 39.296007],
             [-121.63015, 39.305668],
             [-121.752903, 39.303889],
-            [-121.879249, 39.303608]
-          ]
-        ]
-      }
+            [-121.879249, 39.303608],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Calaveras",
-        "cartodb_id": 5,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Calaveras",
+        cartodb_id: 5,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.876047, 38.028894],
             [-120.918749, 38.070822],
@@ -884,22 +884,22 @@ const geojsonData = {
             [-120.775787, 37.943041],
             [-120.8338, 37.994724],
             [-120.849933, 38.00714],
-            [-120.876047, 38.028894]
-          ]
-        ]
-      }
+            [-120.876047, 38.028894],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Colusa",
-        "cartodb_id": 6,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Colusa",
+        cartodb_id: 6,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-122.248517, 39.384961],
             [-122.136006, 39.385494],
@@ -1043,22 +1043,22 @@ const geojsonData = {
             [-122.43129, 39.383779],
             [-122.36101, 39.384568],
             [-122.262988, 39.384628],
-            [-122.248517, 39.384961]
-          ]
-        ]
-      }
+            [-122.248517, 39.384961],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Contra Costa",
-        "cartodb_id": 7,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Contra Costa",
+        cartodb_id: 7,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-121.615148, 38.0996],
@@ -1076,8 +1076,8 @@ const geojsonData = {
               [-121.644556, 38.084483],
               [-121.626577, 38.087805],
               [-121.621594, 38.09848],
-              [-121.615148, 38.0996]
-            ]
+              [-121.615148, 38.0996],
+            ],
           ],
           [
             [
@@ -1085,8 +1085,8 @@ const geojsonData = {
               [-121.579699, 38.031246],
               [-121.564952, 38.029314],
               [-121.564105, 38.023351],
-              [-121.572469, 38.01811]
-            ]
+              [-121.572469, 38.01811],
+            ],
           ],
           [
             [
@@ -1220,8 +1220,8 @@ const geojsonData = {
               [-121.600305, 38.020162],
               [-121.584674, 38.029924],
               [-121.580652, 38.007114],
-              [-121.581978, 37.985811]
-            ]
+              [-121.581978, 37.985811],
+            ],
           ],
           [
             [
@@ -1232,8 +1232,8 @@ const geojsonData = {
               [-121.668076, 38.057788],
               [-121.676172, 38.060785],
               [-121.677337, 38.082214],
-              [-121.675342, 38.088916]
-            ]
+              [-121.675342, 38.088916],
+            ],
           ],
           [
             [
@@ -1242,8 +1242,8 @@ const geojsonData = {
               [-121.85855, 38.047641],
               [-121.850155, 38.053717],
               [-121.840492, 38.028971],
-              [-121.844721, 38.028499]
-            ]
+              [-121.844721, 38.028499],
+            ],
           ],
           [
             [
@@ -1252,23 +1252,23 @@ const geojsonData = {
               [-121.850313, 38.034786],
               [-121.867797, 38.032988],
               [-121.86937, 38.03859],
-              [-121.862338, 38.045592]
-            ]
-          ]
-        ]
-      }
+              [-121.862338, 38.045592],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Del Norte",
-        "cartodb_id": 8,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Del Norte",
+        cartodb_id: 8,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-123.517907, 42.000854],
             [-123.519854, 41.995164],
@@ -1389,22 +1389,22 @@ const geojsonData = {
             [-123.728164, 41.997008],
             [-123.657, 41.995137],
             [-123.624554, 41.999837],
-            [-123.517907, 42.000854]
-          ]
-        ]
-      }
+            [-123.517907, 42.000854],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Tuolumne",
-        "cartodb_id": 55,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Tuolumne",
+        cartodb_id: 55,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.500441, 38.00663],
             [-120.492056, 38.011203],
@@ -1708,22 +1708,22 @@ const geojsonData = {
             [-120.504516, 37.991144],
             [-120.499817, 37.995437],
             [-120.499862, 38.001365],
-            [-120.500441, 38.00663]
-          ]
-        ]
-      }
+            [-120.500441, 38.00663],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "El Dorado",
-        "cartodb_id": 9,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "El Dorado",
+        cartodb_id: 9,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.184098, 39.031014],
             [-120.18356, 39.038372],
@@ -1944,22 +1944,22 @@ const geojsonData = {
             [-120.24041, 39.023668],
             [-120.240157, 39.030889],
             [-120.20527, 39.030722],
-            [-120.184098, 39.031014]
-          ]
-        ]
-      }
+            [-120.184098, 39.031014],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Fresno",
-        "cartodb_id": 10,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Fresno",
+        cartodb_id: 10,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-119.845538, 36.860502],
             [-119.843652, 36.860658],
@@ -2360,22 +2360,22 @@ const geojsonData = {
             [-119.868884, 36.850347],
             [-119.861411, 36.85546],
             [-119.85499, 36.851175],
-            [-119.845538, 36.860502]
-          ]
-        ]
-      }
+            [-119.845538, 36.860502],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Glenn",
-        "cartodb_id": 11,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Glenn",
+        cartodb_id: 11,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-122.892676, 39.708898],
             [-122.912876, 39.708723],
@@ -2476,22 +2476,22 @@ const geojsonData = {
             [-122.885352, 39.580108],
             [-122.884497, 39.610761],
             [-122.890413, 39.622916],
-            [-122.892676, 39.708898]
-          ]
-        ]
-      }
+            [-122.892676, 39.708898],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Humboldt",
-        "cartodb_id": 12,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Humboldt",
+        cartodb_id: 12,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-123.544453, 40.661175],
             [-123.544265, 40.499868],
@@ -2697,22 +2697,22 @@ const geojsonData = {
             [-123.55117, 40.757022],
             [-123.544059, 40.739386],
             [-123.544172, 40.733218],
-            [-123.544453, 40.661175]
-          ]
-        ]
-      }
+            [-123.544453, 40.661175],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Inyo",
-        "cartodb_id": 14,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Inyo",
+        cartodb_id: 14,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-118.337927, 36.654834],
             [-118.329327, 36.666734],
@@ -2949,22 +2949,22 @@ const geojsonData = {
             [-118.320326, 36.637234],
             [-118.325226, 36.647134],
             [-118.336827, 36.654634],
-            [-118.337927, 36.654834]
-          ]
-        ]
-      }
+            [-118.337927, 36.654834],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Lake",
-        "cartodb_id": 17,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Lake",
+        cartodb_id: 17,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-122.410887, 39.010295],
             [-122.411917, 38.998137],
@@ -3150,22 +3150,22 @@ const geojsonData = {
             [-122.43729, 39.021357],
             [-122.413416, 39.020218],
             [-122.409145, 39.012117],
-            [-122.410887, 39.010295]
-          ]
-        ]
-      }
+            [-122.410887, 39.010295],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "San Diego",
-        "cartodb_id": 37,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "San Diego",
+        cartodb_id: 37,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-117.595944, 33.386416],
             [-117.57848, 33.453927],
@@ -3303,22 +3303,22 @@ const geojsonData = {
             [-117.547752, 33.364349],
             [-117.564091, 33.371602],
             [-117.575428, 33.380085],
-            [-117.595944, 33.386416]
-          ]
-        ]
-      }
+            [-117.595944, 33.386416],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "San Francisco",
-        "cartodb_id": 38,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "San Francisco",
+        cartodb_id: 38,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-122.393249, 37.70828],
@@ -3341,8 +3341,8 @@ const geojsonData = {
               [-122.365306, 37.715908],
               [-122.375993, 37.716053],
               [-122.379323, 37.708405],
-              [-122.393249, 37.70828]
-            ]
+              [-122.393249, 37.70828],
+            ],
           ],
           [
             [
@@ -3350,23 +3350,23 @@ const geojsonData = {
               [-122.379069, 37.826649],
               [-122.368536, 37.831073],
               [-122.362871, 37.822591],
-              [-122.3704, 37.814293]
-            ]
-          ]
-        ]
-      }
+              [-122.3704, 37.814293],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Sierra",
-        "cartodb_id": 46,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Sierra",
+        cartodb_id: 46,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.655409, 39.693842],
             [-120.654887, 39.693938],
@@ -3496,22 +3496,22 @@ const geojsonData = {
             [-120.662455, 39.68469],
             [-120.659751, 39.686469],
             [-120.656361, 39.693038],
-            [-120.655409, 39.693842]
-          ]
-        ]
-      }
+            [-120.655409, 39.693842],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Siskiyou",
-        "cartodb_id": 47,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Siskiyou",
+        cartodb_id: 47,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.447538, 41.997507],
             [-121.447647, 41.950317],
@@ -3759,22 +3759,22 @@ const geojsonData = {
             [-122.000319, 42.003967],
             [-121.846712, 42.00307],
             [-121.573199, 41.99851],
-            [-121.447538, 41.997507]
-          ]
-        ]
-      }
+            [-121.447538, 41.997507],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Solano",
-        "cartodb_id": 48,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Solano",
+        cartodb_id: 48,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-121.885882, 38.53876],
@@ -3925,8 +3925,8 @@ const geojsonData = {
               [-121.925323, 38.529705],
               [-121.908969, 38.529576],
               [-121.893784, 38.533429],
-              [-121.885882, 38.53876]
-            ]
+              [-121.885882, 38.53876],
+            ],
           ],
           [
             [
@@ -3935,8 +3935,8 @@ const geojsonData = {
               [-122.016857, 38.074628],
               [-122.024077, 38.091076],
               [-122.00368, 38.085383],
-              [-122.000191, 38.081552]
-            ]
+              [-122.000191, 38.081552],
+            ],
           ],
           [
             [
@@ -3944,8 +3944,8 @@ const geojsonData = {
               [-121.898519, 38.057269],
               [-121.898296, 38.05046],
               [-121.929463, 38.051518],
-              [-121.911301, 38.064776]
-            ]
+              [-121.911301, 38.064776],
+            ],
           ],
           [
             [
@@ -3954,23 +3954,23 @@ const geojsonData = {
               [-121.714867, 38.100867],
               [-121.710656, 38.090803],
               [-121.715153, 38.084559],
-              [-121.731106, 38.082807]
-            ]
-          ]
-        ]
-      }
+              [-121.731106, 38.082807],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Sonoma",
-        "cartodb_id": 49,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Sonoma",
+        cartodb_id: 49,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-123.251118, 38.808402],
             [-123.136253, 38.809136],
@@ -4174,22 +4174,22 @@ const geojsonData = {
             [-123.368394, 38.80664],
             [-123.294626, 38.807203],
             [-123.271759, 38.808399],
-            [-123.251118, 38.808402]
-          ]
-        ]
-      }
+            [-123.251118, 38.808402],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Los Angeles",
-        "cartodb_id": 19,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Los Angeles",
+        cartodb_id: 19,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-118.94485, 34.045657],
@@ -4335,8 +4335,8 @@ const geojsonData = {
               [-118.915466, 34.041638],
               [-118.925314, 34.045994],
               [-118.937077, 34.043216],
-              [-118.94485, 34.045657]
-            ]
+              [-118.94485, 34.045657],
+            ],
           ],
           [
             [
@@ -4387,8 +4387,8 @@ const geojsonData = {
               [-118.472231, 33.442009],
               [-118.449287, 33.432651],
               [-118.442916, 33.428091],
-              [-118.431066, 33.427431]
-            ]
+              [-118.431066, 33.427431],
+            ],
           ],
           [
             [
@@ -4439,8 +4439,8 @@ const geojsonData = {
               [-118.563552, 33.023962],
               [-118.564759, 33.019055],
               [-118.559264, 33.005998],
-              [-118.550149, 33.003084]
-            ]
+              [-118.550149, 33.003084],
+            ],
           ],
           [
             [
@@ -4448,8 +4448,8 @@ const geojsonData = {
               [-118.23705, 33.727758],
               [-118.251135, 33.723575],
               [-118.258224, 33.728921],
-              [-118.240972, 33.73369]
-            ]
+              [-118.240972, 33.73369],
+            ],
           ],
           [
             [
@@ -4462,23 +4462,23 @@ const geojsonData = {
               [-118.244328, 33.751019],
               [-118.254062, 33.745574],
               [-118.251255, 33.737615],
-              [-118.269513, 33.726392]
-            ]
-          ]
-        ]
-      }
+              [-118.269513, 33.726392],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Madera",
-        "cartodb_id": 20,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Madera",
+        cartodb_id: 20,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.399944, 37.118059],
             [-120.384886, 37.124589],
@@ -4739,22 +4739,22 @@ const geojsonData = {
             [-120.406505, 37.11226],
             [-120.405901, 37.112983],
             [-120.402838, 37.116714],
-            [-120.399944, 37.118059]
-          ]
-        ]
-      }
+            [-120.399944, 37.118059],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Marin",
-        "cartodb_id": 21,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Marin",
+        cartodb_id: 21,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-122.42034, 37.863192],
@@ -4763,8 +4763,8 @@ const geojsonData = {
               [-122.434724, 37.853591],
               [-122.444321, 37.860244],
               [-122.430283, 37.872181],
-              [-122.42034, 37.863192]
-            ]
+              [-122.42034, 37.863192],
+            ],
           ],
           [
             [
@@ -4964,23 +4964,23 @@ const geojsonData = {
               [-122.4929, 37.86326],
               [-122.478422, 37.855559],
               [-122.479751, 37.847432],
-              [-122.472709, 37.832033]
-            ]
-          ]
-        ]
-      }
+              [-122.472709, 37.832033],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Mariposa",
-        "cartodb_id": 22,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Mariposa",
+        cartodb_id: 22,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.322514, 37.52669],
             [-120.38767, 37.633364],
@@ -5129,22 +5129,22 @@ const geojsonData = {
             [-120.3014, 37.489533],
             [-120.315055, 37.503373],
             [-120.318149, 37.518485],
-            [-120.322514, 37.52669]
-          ]
-        ]
-      }
+            [-120.322514, 37.52669],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Mendocino",
-        "cartodb_id": 23,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Mendocino",
+        cartodb_id: 23,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-123.063181, 39.503539],
             [-123.063015, 39.452482],
@@ -5363,22 +5363,22 @@ const geojsonData = {
             [-123.024953, 39.511181],
             [-123.04445, 39.5112],
             [-123.044394, 39.503585],
-            [-123.063181, 39.503539]
-          ]
-        ]
-      }
+            [-123.063181, 39.503539],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Merced",
-        "cartodb_id": 24,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Merced",
+        cartodb_id: 24,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.106162, 37.231835],
             [-121.06634, 37.262939],
@@ -5501,22 +5501,22 @@ const geojsonData = {
             [-121.222717, 37.130426],
             [-121.22484, 37.133142],
             [-121.226804, 37.134774],
-            [-121.106162, 37.231835]
-          ]
-        ]
-      }
+            [-121.106162, 37.231835],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Modoc",
-        "cartodb_id": 25,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Modoc",
+        cartodb_id: 25,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-119.999866, 41.183974],
             [-120.177981, 41.184095],
@@ -5561,22 +5561,22 @@ const geojsonData = {
             [-119.998287, 41.618818],
             [-119.999471, 41.499894],
             [-120.000073, 41.249758],
-            [-119.999866, 41.183974]
-          ]
-        ]
-      }
+            [-119.999866, 41.183974],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Tulare",
-        "cartodb_id": 54,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Tulare",
+        cartodb_id: 54,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-119.474892, 36.400953],
             [-119.528792, 36.401465],
@@ -5723,22 +5723,22 @@ const geojsonData = {
             [-119.475234, 36.313373],
             [-119.475481, 36.34182],
             [-119.475187, 36.374941],
-            [-119.474892, 36.400953]
-          ]
-        ]
-      }
+            [-119.474892, 36.400953],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Imperial",
-        "cartodb_id": 13,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Imperial",
+        cartodb_id: 13,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-115.87583, 33.426463],
             [-115.838844, 33.427052],
@@ -5854,22 +5854,22 @@ const geojsonData = {
             [-116.085165, 33.425932],
             [-116.059751, 33.425978],
             [-116.000833, 33.426542],
-            [-115.87583, 33.426463]
-          ]
-        ]
-      }
+            [-115.87583, 33.426463],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Santa Cruz",
-        "cartodb_id": 44,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Santa Cruz",
+        cartodb_id: 44,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.984786, 37.141921],
             [-121.97274, 37.14173],
@@ -6004,22 +6004,22 @@ const geojsonData = {
             [-122.00023, 37.15883],
             [-121.99109, 37.14427],
             [-121.985189, 37.142305],
-            [-121.984786, 37.141921]
-          ]
-        ]
-      }
+            [-121.984786, 37.141921],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Shasta",
-        "cartodb_id": 45,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Shasta",
+        cartodb_id: 45,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-122.001111, 41.18333],
             [-121.657793, 41.183382],
@@ -6255,22 +6255,22 @@ const geojsonData = {
             [-122.225847, 41.18444],
             [-122.147626, 41.184554],
             [-122.126114, 41.182969],
-            [-122.001111, 41.18333]
-          ]
-        ]
-      }
+            [-122.001111, 41.18333],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Stanislaus",
-        "cartodb_id": 50,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Stanislaus",
+        cartodb_id: 50,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.400166, 37.643351],
             [-120.387329, 37.633499],
@@ -6392,22 +6392,22 @@ const geojsonData = {
             [-120.5629, 37.765952],
             [-120.54188, 37.749943],
             [-120.470804, 37.696511],
-            [-120.400166, 37.643351]
-          ]
-        ]
-      }
+            [-120.400166, 37.643351],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Sutter",
-        "cartodb_id": 51,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Sutter",
+        cartodb_id: 51,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.908048, 39.30377],
             [-121.879249, 39.303608],
@@ -6575,22 +6575,22 @@ const geojsonData = {
             [-121.92899, 39.271084],
             [-121.920796, 39.281631],
             [-121.922211, 39.286989],
-            [-121.908048, 39.30377]
-          ]
-        ]
-      }
+            [-121.908048, 39.30377],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Tehama",
-        "cartodb_id": 52,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Tehama",
+        cartodb_id: 52,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-122.199173, 40.377943],
             [-122.194288, 40.391036],
@@ -6840,22 +6840,22 @@ const geojsonData = {
             [-122.232, 40.386127],
             [-122.226197, 40.389081],
             [-122.201253, 40.377889],
-            [-122.199173, 40.377943]
-          ]
-        ]
-      }
+            [-122.199173, 40.377943],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Trinity",
-        "cartodb_id": 53,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Trinity",
+        cartodb_id: 53,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-123.623891, 40.928674],
             [-123.623662, 40.929823],
@@ -7172,22 +7172,22 @@ const geojsonData = {
             [-123.606087, 40.90479],
             [-123.615827, 40.914068],
             [-123.613423, 40.921551],
-            [-123.623891, 40.928674]
-          ]
-        ]
-      }
+            [-123.623891, 40.928674],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Kern",
-        "cartodb_id": 15,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Kern",
+        cartodb_id: 15,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-119.997392, 35.439495],
             [-119.997382, 35.468702],
@@ -7287,22 +7287,22 @@ const geojsonData = {
             [-119.809346, 35.350865],
             [-119.880172, 35.351211],
             [-119.880045, 35.439133],
-            [-119.997392, 35.439495]
-          ]
-        ]
-      }
+            [-119.997392, 35.439495],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "San Mateo",
-        "cartodb_id": 41,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "San Mateo",
+        cartodb_id: 41,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-122.502827, 37.708133],
@@ -7433,8 +7433,8 @@ const geojsonData = {
               [-122.494419, 37.636732],
               [-122.494592, 37.663146],
               [-122.49631, 37.682079],
-              [-122.502827, 37.708133]
-            ]
+              [-122.502827, 37.708133],
+            ],
           ],
           [
             [
@@ -7448,23 +7448,23 @@ const geojsonData = {
               [-122.242287, 37.527237],
               [-122.229642, 37.533578],
               [-122.224058, 37.54256],
-              [-122.199181, 37.537939]
-            ]
-          ]
-        ]
-      }
+              [-122.199181, 37.537939],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Santa Barbara",
-        "cartodb_id": 42,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Santa Barbara",
+        cartodb_id: 42,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-120.496222, 34.993155],
@@ -7646,8 +7646,8 @@ const geojsonData = {
               [-120.575191, 34.978291],
               [-120.55492, 34.973881],
               [-120.53857, 34.983754],
-              [-120.496222, 34.993155]
-            ]
+              [-120.496222, 34.993155],
+            ],
           ],
           [
             [
@@ -7656,8 +7656,8 @@ const geojsonData = {
               [-119.043741, 33.472349],
               [-119.044389, 33.482268],
               [-119.029502, 33.48514],
-              [-119.027973, 33.476002]
-            ]
+              [-119.027973, 33.476002],
+            ],
           ],
           [
             [
@@ -7719,8 +7719,8 @@ const geojsonData = {
               [-119.735573, 34.046254],
               [-119.726041, 34.047895],
               [-119.713324, 34.043459],
-              [-119.701347, 34.03256]
-            ]
+              [-119.701347, 34.03256],
+            ],
           ],
           [
             [
@@ -7745,8 +7745,8 @@ const geojsonData = {
               [-120.413338, 34.032665],
               [-120.427115, 34.025555],
               [-120.447082, 34.030984],
-              [-120.423921, 34.049476]
-            ]
+              [-120.423921, 34.049476],
+            ],
           ],
           [
             [
@@ -7793,23 +7793,23 @@ const geojsonData = {
               [-120.077179, 33.908812],
               [-120.098846, 33.908087],
               [-120.120452, 33.894678],
-              [-120.146721, 33.908798]
-            ]
-          ]
-        ]
-      }
+              [-120.146721, 33.908798],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Santa Clara",
-        "cartodb_id": 43,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Santa Clara",
+        cartodb_id: 43,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-121.849086, 37.098997],
@@ -7998,8 +7998,8 @@ const geojsonData = {
               [-121.81824, 37.08374],
               [-121.84337, 37.09453],
               [-121.84431, 37.09506],
-              [-121.849086, 37.098997]
-            ]
+              [-121.849086, 37.098997],
+            ],
           ],
           [
             [
@@ -8008,8 +8008,8 @@ const geojsonData = {
               [-121.931471, 37.460911],
               [-121.931128, 37.45739],
               [-121.932899, 37.455447],
-              [-121.932415, 37.460375]
-            ]
+              [-121.932415, 37.460375],
+            ],
           ],
           [
             [
@@ -8017,23 +8017,23 @@ const geojsonData = {
               [-121.927793, 37.457124],
               [-121.92785, 37.455262],
               [-121.92632, 37.454631],
-              [-121.929132, 37.456906]
-            ]
-          ]
-        ]
-      }
+              [-121.929132, 37.456906],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Ventura",
-        "cartodb_id": 56,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Ventura",
+        cartodb_id: 56,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-119.47667, 34.373283],
@@ -8104,8 +8104,8 @@ const geojsonData = {
               [-119.434472, 34.35575],
               [-119.44309, 34.355877],
               [-119.460346, 34.373859],
-              [-119.47667, 34.373283]
-            ]
+              [-119.47667, 34.373283],
+            ],
           ],
           [
             [
@@ -8129,23 +8129,23 @@ const geojsonData = {
               [-119.544995, 33.232346],
               [-119.565794, 33.248345],
               [-119.573521, 33.26072],
-              [-119.573226, 33.267102]
-            ]
-          ]
-        ]
-      }
+              [-119.573226, 33.267102],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Yolo",
-        "cartodb_id": 57,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Yolo",
+        cartodb_id: 57,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.693733, 38.450503],
             [-121.693639, 38.487604],
@@ -8337,22 +8337,22 @@ const geojsonData = {
             [-121.593273, 38.313089],
             [-121.693697, 38.313732],
             [-121.693947, 38.372769],
-            [-121.693733, 38.450503]
-          ]
-        ]
-      }
+            [-121.693733, 38.450503],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Yuba",
-        "cartodb_id": 58,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Yuba",
+        cartodb_id: 58,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.205707, 39.30967],
             [-121.200146, 39.302375],
@@ -8541,22 +8541,22 @@ const geojsonData = {
             [-121.19827, 39.323943],
             [-121.200095, 39.321645],
             [-121.206352, 39.316469],
-            [-121.205707, 39.30967]
-          ]
-        ]
-      }
+            [-121.205707, 39.30967],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Lassen",
-        "cartodb_id": 18,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Lassen",
+        cartodb_id: 18,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.750519, 41.184042],
             [-120.666668, 41.183843],
@@ -8692,22 +8692,22 @@ const geojsonData = {
             [-121.211022, 41.184514],
             [-121.006906, 41.18435],
             [-120.882641, 41.18401],
-            [-120.750519, 41.184042]
-          ]
-        ]
-      }
+            [-120.750519, 41.184042],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Kings",
-        "cartodb_id": 16,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Kings",
+        cartodb_id: 16,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-119.475234, 36.313373],
             [-119.474607, 36.269025],
@@ -8761,22 +8761,22 @@ const geojsonData = {
             [-119.474892, 36.400953],
             [-119.475187, 36.374941],
             [-119.475481, 36.34182],
-            [-119.475234, 36.313373]
-          ]
-        ]
-      }
+            [-119.475234, 36.313373],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Mono",
-        "cartodb_id": 26,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Mono",
+        cartodb_id: 26,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-119.308362, 38.009191],
             [-119.30459, 38.023891],
@@ -8983,22 +8983,22 @@ const geojsonData = {
             [-119.31469, 37.981123],
             [-119.318391, 37.986423],
             [-119.309286, 38.004777],
-            [-119.308362, 38.009191]
-          ]
-        ]
-      }
+            [-119.308362, 38.009191],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Monterey",
-        "cartodb_id": 27,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Monterey",
+        cartodb_id: 27,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.809418, 36.851426],
             [-121.801764, 36.856495],
@@ -9303,22 +9303,22 @@ const geojsonData = {
             [-121.749748, 36.817509],
             [-121.773025, 36.820577],
             [-121.789621, 36.807518],
-            [-121.809418, 36.851426]
-          ]
-        ]
-      }
+            [-121.809418, 36.851426],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Napa",
-        "cartodb_id": 28,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Napa",
+        cartodb_id: 28,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-122.569849, 38.529991],
             [-122.573999, 38.540359],
@@ -9464,22 +9464,22 @@ const geojsonData = {
             [-122.543893, 38.519966],
             [-122.552782, 38.525689],
             [-122.568674, 38.528953],
-            [-122.569849, 38.529991]
-          ]
-        ]
-      }
+            [-122.569849, 38.529991],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Nevada",
-        "cartodb_id": 29,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Nevada",
+        cartodb_id: 29,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-120.714514, 39.483744],
             [-120.715171, 39.485036],
@@ -9647,22 +9647,22 @@ const geojsonData = {
             [-120.721709, 39.476682],
             [-120.718634, 39.479316],
             [-120.715155, 39.48118],
-            [-120.714514, 39.483744]
-          ]
-        ]
-      }
+            [-120.714514, 39.483744],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Orange",
-        "cartodb_id": 30,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Orange",
+        cartodb_id: 30,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-118.099107, 33.776518],
@@ -9748,8 +9748,8 @@ const geojsonData = {
               [-118.112168, 33.747567],
               [-118.09197, 33.758472],
               [-118.09371, 33.768333],
-              [-118.099107, 33.776518]
-            ]
+              [-118.099107, 33.776518],
+            ],
           ],
           [
             [
@@ -9757,23 +9757,23 @@ const geojsonData = {
               [-118.119336, 33.738149],
               [-118.11483, 33.745949],
               [-118.114076, 33.746531],
-              [-118.119423, 33.737606]
-            ]
-          ]
-        ]
-      }
+              [-118.119423, 33.737606],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Placer",
-        "cartodb_id": 31,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Placer",
+        cartodb_id: 31,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.064599, 39.007577],
             [-121.062227, 39.009737],
@@ -9969,22 +9969,22 @@ const geojsonData = {
             [-121.090272, 39.014267],
             [-121.08067, 39.007207],
             [-121.065868, 39.006443],
-            [-121.064599, 39.007577]
-          ]
-        ]
-      }
+            [-121.064599, 39.007577],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Plumas",
-        "cartodb_id": 32,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Plumas",
+        cartodb_id: 32,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.350821, 39.825704],
             [-121.351079, 39.84035],
@@ -10240,22 +10240,22 @@ const geojsonData = {
             [-121.318471, 39.810906],
             [-121.332333, 39.811053],
             [-121.332293, 39.825696],
-            [-121.350821, 39.825704]
-          ]
-        ]
-      }
+            [-121.350821, 39.825704],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Riverside",
-        "cartodb_id": 33,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Riverside",
+        cartodb_id: 33,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-117.673749, 33.870831],
             [-117.668985, 33.880915],
@@ -10412,22 +10412,22 @@ const geojsonData = {
             [-117.662117, 33.857499],
             [-117.674282, 33.857956],
             [-117.675053, 33.868725],
-            [-117.673749, 33.870831]
-          ]
-        ]
-      }
+            [-117.673749, 33.870831],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "Sacramento",
-        "cartodb_id": 34,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "Sacramento",
+        cartodb_id: 34,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-121.027084, 38.300252],
@@ -10580,8 +10580,8 @@ const geojsonData = {
               [-121.03155, 38.517603],
               [-121.027406, 38.50354],
               [-121.027262, 38.489252],
-              [-121.027084, 38.300252]
-            ]
+              [-121.027084, 38.300252],
+            ],
           ],
           [
             [
@@ -10599,8 +10599,8 @@ const geojsonData = {
               [-121.744675, 38.030426],
               [-121.7729, 38.032009],
               [-121.785445, 38.039203],
-              [-121.785923, 38.04961]
-            ]
+              [-121.785923, 38.04961],
+            ],
           ],
           [
             [
@@ -10609,8 +10609,8 @@ const geojsonData = {
               [-121.834047, 38.056647],
               [-121.827314, 38.061203],
               [-121.803929, 38.050951],
-              [-121.817468, 38.042748]
-            ]
+              [-121.817468, 38.042748],
+            ],
           ],
           [
             [
@@ -10620,23 +10620,23 @@ const geojsonData = {
               [-121.787287, 38.025993],
               [-121.800948, 38.024592],
               [-121.812167, 38.027749],
-              [-121.82929, 38.039134]
-            ]
-          ]
-        ]
-      }
+              [-121.82929, 38.039134],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "San Benito",
-        "cartodb_id": 35,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "San Benito",
+        cartodb_id: 35,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.484726, 36.764142],
             [-121.505748, 36.758909],
@@ -10803,22 +10803,22 @@ const geojsonData = {
             [-121.473002, 36.746325],
             [-121.474368, 36.756672],
             [-121.482644, 36.765408],
-            [-121.484726, 36.764142]
-          ]
-        ]
-      }
+            [-121.484726, 36.764142],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "San Bernardino",
-        "cartodb_id": 36,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "San Bernardino",
+        cartodb_id: 36,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-117.659757, 34.452769],
             [-117.660346, 34.557848],
@@ -11029,22 +11029,22 @@ const geojsonData = {
             [-117.686799, 34.138122],
             [-117.678501, 34.161993],
             [-117.646374, 34.28917],
-            [-117.659757, 34.452769]
-          ]
-        ]
-      }
+            [-117.659757, 34.452769],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "San Joaquin",
-        "cartodb_id": 39,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "San Joaquin",
+        cartodb_id: 39,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
           [
             [
               [-121.557038, 37.815988],
@@ -11206,8 +11206,8 @@ const geojsonData = {
               [-121.545754, 37.532532],
               [-121.556655, 37.542732],
               [-121.557002, 37.77346],
-              [-121.557038, 37.815988]
-            ]
+              [-121.557038, 37.815988],
+            ],
           ],
           [
             [
@@ -11217,23 +11217,23 @@ const geojsonData = {
               [-121.524965, 38.042783],
               [-121.518358, 38.052054],
               [-121.507866, 38.050647],
-              [-121.501346, 38.037508]
-            ]
-          ]
-        ]
-      }
+              [-121.501346, 38.037508],
+            ],
+          ],
+        ],
+      },
     },
     {
-      "type": "Feature",
-      "properties": {
-        "name": "San Luis Obispo",
-        "cartodb_id": 40,
-        "created_at": "2015-07-04T21:04:58Z",
-        "updated_at": "2015-07-04T21:04:58Z"
+      type: "Feature",
+      properties: {
+        name: "San Luis Obispo",
+        cartodb_id: 40,
+        created_at: "2015-07-04T21:04:58Z",
+        updated_at: "2015-07-04T21:04:58Z",
       },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      geometry: {
+        type: "Polygon",
+        coordinates: [
           [
             [-121.347884, 35.79519],
             [-121.21735, 35.794279],
@@ -11437,15 +11437,13 @@ const geojsonData = {
             [-121.32498, 35.761269],
             [-121.325067, 35.769625],
             [-121.332047, 35.78185],
-            [-121.347884, 35.79519]
-          ]
-        ]
-      }
-    }
-  ]
-}
-
-
+            [-121.347884, 35.79519],
+          ],
+        ],
+      },
+    },
+  ],
+};
 
 const svgStr = converter.convert(geojsonData);
 const californiaCounties = {};
@@ -11456,8 +11454,10 @@ geojsonData.features.forEach((feature, index) => {
   californiaCounties[countyName] = pathData;
 });
 
-console.log('const californiaCounties =', JSON.stringify(californiaCounties, null, 2));
+console.log(
+  "const californiaCounties =",
+  JSON.stringify(californiaCounties, null, 2),
+);
 
 // Export the data for use in other files
 module.exports = { californiaCounties, converter, geojsonData };
-

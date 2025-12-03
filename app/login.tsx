@@ -29,7 +29,7 @@ export default function LogIn() {
   const signIn = async () => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      if (!response.user) console.log("FAILED SIGN IN")
+      if (!response.user) console.log("FAILED SIGN IN");
       const user = await UserRepo.load(response.user.uid);
       if (!user) {
         const uid = response.user.uid;

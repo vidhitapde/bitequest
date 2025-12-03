@@ -32,6 +32,8 @@ export default function useReview() {
       }));
       console.log(userReviews);
       setReview(userReviews);
+      user.balance += 20;
+      user.profile.reviews.push(userReviews);
     } else {
       console.log("No user information found, not logged in");
     }
@@ -71,7 +73,7 @@ export default function useReview() {
   };
 
   const selectRestaurant = (restaurant: any) => {
-    //just restuarant name from full addy
+    // just restuarant name from full addy
     const restaurantName = restaurant.description.split(",")[0].trim();
     setSelectedRestaurant(restaurantName);
     setSearchText(restaurant.description);

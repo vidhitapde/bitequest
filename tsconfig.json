@@ -5,15 +5,9 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@app/*": [
-        "app/*"
-      ]
+      "@/*": ["./*"],
+      "@components/*": ["components/*"],
+      "@app/*": ["app/*"]
     }
   },
   "include": [
@@ -24,7 +18,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

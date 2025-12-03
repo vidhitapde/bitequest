@@ -2,10 +2,7 @@ import { Image, ScrollView, View, Text } from "react-native";
 import { imageMap } from "@/data/shopItem";
 
 import React, { useState, useEffect } from "react";
-import {
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { FB_AUTH } from "@/firebaseConfig";
 import { FB_DB } from "@/firebaseConfig";
 

@@ -14,7 +14,7 @@ export class User {
     public profile: Profile = new Profile(name),
     public ownedClothing: Map<string, Clothing> = new Map(),
     public ownedDecor: Map<string, Decor> = new Map(),
-    public closet: Closet = { clothing: [], decor: []},
+    public closet: Closet = { clothing: [], decor: [] },
     public locations: Map<string, Location> = new Map(),
   ) {}
 
@@ -29,7 +29,7 @@ export class User {
       new Map(Object.entries(raw.ownedDecor ?? {})),
       raw.closet,
       new Map(Object.entries(raw.locations ?? {})),
-    )
+    );
   }
 
   toFirestore() {
@@ -43,7 +43,7 @@ export class User {
       ownedDecor: Object.fromEntries(this.ownedDecor),
       closet: this.closet,
       locations: Object.fromEntries(this.locations),
-    }
+    };
   }
 }
 
