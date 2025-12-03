@@ -38,7 +38,7 @@ export default function Review() {
     searchRestaurants,
     selectRestaurant,
     pickImage,
-    photoUri
+    photoUri,
   } = useReview();
   const router = useRouter();
 
@@ -152,19 +152,21 @@ export default function Review() {
                 </Button>
 
                 {photoUri && (
-                <Image source={{ uri: photoUri }} 
-                style={{ width: 100, height: 100, borderRadius: 10 }} 
-                /> )}
+                  <Image
+                    source={{ uri: photoUri }}
+                    style={{ width: 100, height: 100, borderRadius: 10 }}
+                  />
+                )}
 
-                  <Button onPress={addReview}>
-                    <Text className="bg-[#723D46] m-6 mt-12 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
-                      Post
-                    </Text>
-                  </Button>
-                </View>
+                <Button onPress={addReview}>
+                  <Text className="bg-[#723D46] m-6 mt-12 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
+                    Post
+                  </Text>
+                </Button>
+              </View>
             }
           />
-              </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
       </View>
     </View>
   );
