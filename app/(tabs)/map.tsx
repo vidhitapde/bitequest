@@ -1,4 +1,4 @@
-import { GOOGLE, FB_AUTH, FB_DB } from "@/firebaseConfig";
+import { FB_AUTH, FB_DB, GOOGLE } from "@/firebaseConfig";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -13,13 +13,14 @@ import {
 } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
 import "../../global.css";
+import { useUser } from "../appprovider";
 const { californiaCounties } = require("../geojson2svg");
 
 export default function MapScreen() {
   const router = useRouter();
   const auth = FB_AUTH;
   const [reviews, setReviews] = useState<any[]>([]);
-  const [user, setUser] = useState<any>(null);
+  const { user } = useUser();
   const reviewsCollection = collection(FB_DB, "reviews");
   const [visitedCounties, setVisitedCounties] = useState(new Set());
 
@@ -28,7 +29,6 @@ export default function MapScreen() {
       if (!currentUser) {
         router.replace("/");
       } else {
-        setUser(currentUser);
         fetchReviews(currentUser);
       }
     });
@@ -146,7 +146,7 @@ export default function MapScreen() {
               }}
             >
               <Image source={require("../../assets/images/coins.png")} />
-              {/*replace w text from backend*/}
+              {/* show user's coins from app context */}
               <Text
                 style={{
                   position: "absolute",
@@ -157,7 +157,10 @@ export default function MapScreen() {
                   paddingLeft: 15,
                 }}
               >
-                50
+                {(() => {
+                  const coins = user?.balance ?? 0;
+                  return String(coins);
+                })()}
               </Text>
             </View>
           </View>

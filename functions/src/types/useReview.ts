@@ -1,10 +1,18 @@
-import { addDoc, deleteDoc, collection, getDocs, query, where, doc } from "firebase/firestore";
+import {
+  addDoc,
+  deleteDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useUser } from "../../../app/appprovider";
 import { FB_DB, GOOGLE, FB_STORAGE } from "../../../firebaseConfig.js";
 import { router } from "expo-router";
-import { Alert, Button, Image, View, StyleSheet } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { Alert, Button, Image, View, StyleSheet } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 export default function useReview() {
   const [rating, setRating] = useState(0);
@@ -34,21 +42,24 @@ export default function useReview() {
       }));
       console.log(userReviews);
       setReview(userReviews);
-
     } else {
       console.log("No user information found, not logged in");
     }
   };
   const pickImage = async () => {
-    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (!permissionResult.granted) {
-      Alert.alert('Permission required', 'Permission to access the media library is required.');
+      Alert.alert(
+        "Permission required",
+        "Permission to access the media library is required.",
+      );
       return;
     }
 
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images', 'videos'],
+      mediaTypes: ["images", "videos"],
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
@@ -60,8 +71,6 @@ export default function useReview() {
       setPhotoUri(result.assets[0].uri);
     }
   };
-
-
 
   // };
   //    const addReview = async () => {
@@ -107,7 +116,6 @@ export default function useReview() {
   };
 
   const addReview = async () => {
-
     //   if (user) {
     //     if (photoUri) {
     //       try {
@@ -128,37 +136,35 @@ export default function useReview() {
     router.push("/(tabs)/map");
   };
 
-const deleteReview = async (id: string) => {
-  const reviewDoc = doc(FB_DB, 'reviews', id);
-  await deleteDoc(reviewDoc);
-  fetchReview();
-};
+  const deleteReview = async (id: string) => {
+    const reviewDoc = doc(FB_DB, "reviews", id);
+    await deleteDoc(reviewDoc);
+    fetchReview();
+  };
 
-return {
-  rating,
-  setRating,
-  reviewText,
-  setReviewText,
-  reviews,
-  addReview,
-  fetchReview,
-  selectedRestaurant,
-  searchText,
-  showResults,
-  searchResults,
-  setSearchText,
-  searchRestaurants,
-  selectRestaurant,
-  deleteReview,
-  photoUri,
-  pickImage,
-};
+  return {
+    rating,
+    setRating,
+    reviewText,
+    setReviewText,
+    reviews,
+    addReview,
+    fetchReview,
+    selectedRestaurant,
+    searchText,
+    showResults,
+    searchResults,
+    setSearchText,
+    searchRestaurants,
+    selectRestaurant,
+    deleteReview,
+    photoUri,
+    pickImage,
+  };
 
   // const updateReview = async(id: string) =>
   // {
   //   const reviewDoc = doc(FB_DB, 'reviews', id);
   //   fetchReview();
   // }
-
-
 }

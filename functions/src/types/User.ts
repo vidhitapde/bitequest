@@ -10,7 +10,7 @@ export class User {
     public uid: string,
     public email: string,
     public name: string,
-    public balance: number = 0,
+    public balance: number = 50,
     public profile: Profile = new Profile(name),
     public ownedClothing: Map<string, Clothing> = new Map(),
     public ownedDecor: Map<string, Decor> = new Map(),
