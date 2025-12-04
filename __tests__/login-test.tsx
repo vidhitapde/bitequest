@@ -118,6 +118,34 @@ describe("<Login />", () => {
             expect.stringContaining("Failed to sign in. Please check your credentials and try again.")
         );
     });
+    test("Login button with invalid email format shows alert", async () => {
+        (global.alert as jest.Mock).mockClear();
+        const { getByPlaceholderText, getByText } = render(<Login />);
+        const emailInput = getByPlaceholderText("Email");
+        const passwordInput = getByPlaceholderText("Enter your password");
+        const loginButton = getByText("Login");
+
+        fireEvent.changeText(emailInput, "invalid-email-format");
+        fireEvent.changeText(passwordInput, "somepassword");
+        fireEvent.press(loginButton);
+
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        expect(global.alert).toHaveBeenCalledWith(
+            expect.stringContaining("Failed to sign in. Please check your credentials and try again.")
+        );  
+    });
+   test("Pressing eye icon shows your password", () => {
+        const { getByPlaceholderText, getByTestId } = render(<Login />);
+        const passwordInput = getByPlaceholderText("Enter your password");
+        const eyeIcon = getByTestId("togglePasswordVisibility");
+        expect(passwordInput.props.secureTextEntry).toBe(true);
+        fireEvent.press(eyeIcon);
+        expect(passwordInput.props.secureTextEntry).toBe(false);
+        fireEvent.press(eyeIcon);
+        expect(passwordInput.props.secureTextEntry).toBe(true);
+    });
+   
     test("Login button without email and password shows alert", async () => {
         (global.alert as jest.Mock).mockClear();
         const { getByText } = render(<Login />);
