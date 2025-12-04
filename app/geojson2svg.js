@@ -11454,10 +11454,10 @@ geojsonData.features.forEach((feature, index) => {
   californiaCounties[countyName] = pathData;
 });
 
-console.log(
-  "const californiaCounties =",
-  JSON.stringify(californiaCounties, null, 2),
-);
+// console.log(
+//   "const californiaCounties =",
+//   JSON.stringify(californiaCounties, null, 2),
+// );
 
 // Export the data for use in other files
 module.exports = { californiaCounties, converter, geojsonData };

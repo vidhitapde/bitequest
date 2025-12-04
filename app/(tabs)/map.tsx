@@ -168,7 +168,7 @@ export default function MapScreen() {
             }}
           >
             <TouchableOpacity onPress={() => auth.signOut()}>
-              <Ionicons name="settings-sharp" size={32} color="#723D46" />
+              <Ionicons name="exit-outline" size={32} color="#723D46" strokeWidth={20} />
             </TouchableOpacity>
 
             <View
