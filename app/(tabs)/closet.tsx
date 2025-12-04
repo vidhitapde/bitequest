@@ -1,12 +1,20 @@
 import { imageMap } from "@/data/closet";
+import {useUser } from "../appprovider"
+import { FB_DB } from "../../firebaseConfig";
 import { useEffect, useState } from "react";
 import { DeviceEventEmitter, Image, RefreshControl, ScrollView, TouchableOpacity, View } from "react-native";
 
 import usePurchaseItem from "@/functions/src/https/usePurchaseItem";
 
+import {
+  doc,
+  updateDoc,
+} from "firebase/firestore";
+
 import "../../global.css";
 
 export default function Closet() {
+  const { user } = useUser();
   const { inventory, fetchInventory } = usePurchaseItem();
   const [selectedHair, setSelectedHair] = useState("default-hair");
   const [selectedShirt, setSelectedShirt] = useState("default-shirt");
@@ -22,12 +30,45 @@ export default function Closet() {
     return () => sub.remove();
   }, []);
 
+useEffect(() => {
+  const avatar = user?.profile?.avatar;
+
+  setSelectedHair(avatar?.hair ?? "default-hair");
+  setSelectedShirt(avatar?.shirt ?? "default-shirt");
+  setSelectedPants(avatar?.pants ?? "default-pants");
+  setSelectedRug(avatar?.rug ?? "default-rug");
+}, [user]);
+
   // decide which setter to call
-  const handleEquip = (id: string) => {
-    if (id.includes("hair")) setSelectedHair(id);
-    else if (id.includes("shirt")) setSelectedShirt(id);
-    else if (id.includes("pants")) setSelectedPants(id);
-    else if (id.includes("rug")) setSelectedRug(id);
+  const handleEquip = async (id: string) => {
+    if(!user) return;
+
+    let newAvatar = {
+      hair: selectedHair,
+      shirt: selectedShirt,
+      pants: selectedPants,
+      rug: selectedRug,
+  };
+
+    if (id.includes("hair")) {
+    newAvatar.hair = id;
+    setSelectedHair(id);
+  } else if (id.includes("shirt")) {
+    newAvatar.shirt = id;
+    setSelectedShirt(id);
+  } else if (id.includes("pants")) {
+    newAvatar.pants = id;
+    setSelectedPants(id);
+  } else if (id.includes("rug")) {
+    newAvatar.rug = id;
+    setSelectedRug(id);
+  }
+
+    console.log(selectedHair)
+    const userRef = doc(FB_DB, "users", user.uid);
+    await updateDoc(userRef, {
+    "profile.avatar": newAvatar 
+  });
   };
 
   const hairImage = imageMap[selectedHair];
