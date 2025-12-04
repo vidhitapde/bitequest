@@ -5,3 +5,8 @@ Vidhi Tapde <vidhi.tapde@email.ucr.edu>
 Nichole Godfrey <nichole.godfrey@email.ucr.edu>
 Rachel Chan <rachel.chan@email.ucr.edu>
 Osanna Deng <osanna.deng@email.ucr.edu>
+
+TO RUN:
+npx expo start
+TO TEST:
+npm test
