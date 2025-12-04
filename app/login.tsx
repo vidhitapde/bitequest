@@ -10,7 +10,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Platform, Pressable, View } from "react-native";
 import { FB_AUTH } from "../firebaseConfig";
-import { User, UserRepo } from "../functions/src/types/User";
+import { UserRepo } from "../functions/src/types/User";
 import "../global.css";
 import { useUser } from "./appprovider";
 
@@ -30,7 +30,9 @@ export default function LogIn() {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
       if (!response.user) console.log("FAILED SIGN IN");
+      console.log(response.user);
       const user = await UserRepo.load(response.user.uid);
+      if (!user) console.error("USER DOES NOT EXIST");
       if (!user) {
         const uid = response.user.uid;
         const name = response.user.displayName ?? "";
