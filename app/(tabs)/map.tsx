@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
-import { FB_AUTH, FB_DB } from "../../firebaseConfig";
+import { FB_AUTH, FB_DB, GOOGLE } from "../../firebaseConfig";
 import "../../global.css";
 const { californiaCounties } = require("../geojson2svg");
 
@@ -94,7 +94,7 @@ export default function MapScreen() {
       }
       
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(parsedAddress)}&key=AIzaSyAYehfhYVP0inq67-kE-7BZKMn-RHsn8c4`,
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(parsedAddress)}&key=${GOOGLE}`,
       );
       const data = await response.json();
 
