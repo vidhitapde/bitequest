@@ -2,7 +2,7 @@ import { router } from "expo-router";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useUser } from "../../../app/appprovider";
-import { FB_AUTH, FB_DB, GOOGLE } from "../../../firebaseConfig.js";
+import { FB_AUTH, FB_DB, GOOGLE } from "../../../firebaseConfig";
 
 export default function useReview() {
   const [rating, setRating] = useState(0);
