@@ -10,9 +10,10 @@ import {
 import { useEffect, useState } from "react";
 import { useUser } from "../../../app/appprovider";
 import { FB_DB, GOOGLE, FB_STORAGE } from "../../../firebaseConfig.js";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { router } from "expo-router";
-import { Alert, Button, Image, View, StyleSheet } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+import { Alert } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function useReview() {
   const [rating, setRating] = useState(0);
@@ -20,9 +21,13 @@ export default function useReview() {
   const [reviews, setReview] = useState<any>([]);
   const [selectedRestaurant, setSelectedRestaurant] =
     useState("Restaurant name");
+  const [city, setCity] =
+    useState("Restaurant name");
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [image, setImage] = useState<any>(null);
+  const [images, setImages] = useState<any[]>([]);
   const [photoUri, setPhotoUri] = useState<string | null>(null);
 
   const { user } = useUser();
@@ -46,6 +51,7 @@ export default function useReview() {
       console.log("No user information found, not logged in");
     }
   };
+
   const pickImage = async () => {
     const permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -72,19 +78,36 @@ export default function useReview() {
     }
   };
 
-  // };
-  //    const addReview = async () => {
-  //        if (user) {
-  //            await addDoc(reviewsCollection, { rating, reviewText, userId: user.uid });
-  //            setRating(0);
-  //            setReviewText('');
-  //            fetchReview();
 
-  //        }
-  //        else {
-  //            console.log("No user logged in");
-  //        }
-  //    }
+  const uploadImage = async (uri: string) => {
+    if (!user || !uri) {
+      console.log(`User: ${user}, Image: ${uri}`); // Add logging to check values
+      Alert.alert('No user or image found!');
+      return;
+    }
+
+    console.log("Attempting to upload image: ", uri); // Log the image URI for debugging
+
+    try {
+      const response = await fetch(uri);
+      const blob = await response.blob();
+
+      console.log("Blob created: ", blob); // Log the blob for debugging
+
+      const storageRef = ref(FB_STORAGE, `images/${user.uid}/${Date.now()}`);
+      await uploadBytes(storageRef, blob);
+
+      const url = await getDownloadURL(storageRef);
+      return url;
+    } catch (error: any) {
+      console.error("Error uploading image: ", error);
+      Alert.alert('Upload failed!', error.message);
+      return null;
+    }
+  };
+
+
+
   const searchRestaurants = async (text: string) => {
     if (text.length < 2) {
       setSearchResults([]);
@@ -106,38 +129,53 @@ export default function useReview() {
       console.error("Error searching restaurants:", error);
     }
   };
+  const selectAddress = (restaurant: any) => {
+    //just restuarant name from full addy
+    const cityName = restaurant.description.split(",")[2].trim();
+    const stateName = restaurant.description.split(",")[3].trim();
+    const combinedName = cityName + ", " + stateName;
+    setCity(combinedName);
+    setSearchText(restaurant.description);
+    setShowResults(false);
+  };
 
   const selectRestaurant = (restaurant: any) => {
     //just restuarant name from full addy
     const restaurantName = restaurant.description.split(",")[0].trim();
     setSelectedRestaurant(restaurantName);
+    selectAddress(restaurant);
     setSearchText(restaurant.description);
     setShowResults(false);
   };
 
+
   const addReview = async () => {
-    //   if (user) {
-    //     if (photoUri) {
-    //       try {
-    //         imageUrl = await uploadReviewImage(photoUri);
-    //       }
-    //  }
+    let uploadedUrls = [];
+    if (photoUri) {
+      const imgurl = await uploadImage(photoUri)
+      if (imgurl) {
+        uploadedUrls.push(imgurl);
+      }
+    }
+    uploadedUrls = [...uploadedUrls, ...images];
     await addDoc(reviewsCollection, {
       rating,
       reviewText,
       userId: user.uid,
       restaurantName: selectedRestaurant,
       restaurantFullAddress: searchText,
-      // imageUrl: imageUrl,
+      images: uploadedUrls,
+      city: city,
     });
     setRating(0);
     setReviewText("");
     fetchReview();
+    setPhotoUri(null);;
     router.push("/(tabs)/map");
   };
 
   const deleteReview = async (id: string) => {
-    const reviewDoc = doc(FB_DB, "reviews", id);
+    const reviewDoc = doc(FB_DB, 'reviews', id);
     await deleteDoc(reviewDoc);
     fetchReview();
   };
@@ -160,6 +198,9 @@ export default function useReview() {
     deleteReview,
     photoUri,
     pickImage,
+    selectAddress,
+    city,
+
   };
 
   // const updateReview = async(id: string) =>
@@ -167,4 +208,4 @@ export default function useReview() {
   //   const reviewDoc = doc(FB_DB, 'reviews', id);
   //   fetchReview();
   // }
-}
+};

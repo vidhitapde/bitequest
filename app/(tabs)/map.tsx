@@ -92,7 +92,7 @@ export default function MapScreen() {
         parsedAddress = commaParts.slice(1).join(',').trim();
         console.log('address from:', restaurantAddress, 'to:', parsedAddress);
       }
-      
+
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(parsedAddress)}&key=${GOOGLE}`,
       );
@@ -100,25 +100,25 @@ export default function MapScreen() {
 
       if (data.results && data.results.length > 0) {
         let selectedResult = null;
-        
+
         for (const result of data.results) {
           const stateComponent = result.address_components.find((component: any) =>
             component.types.includes("administrative_area_level_1")
           );
-          
+
           if (stateComponent && (stateComponent.short_name === "CA" || stateComponent.long_name === "California")) {
             selectedResult = result;
             console.log("Found California result:", result.formatted_address);
             break;
           }
         }
-        
+
         // If no California result found, use the first result
         if (!selectedResult) {
           selectedResult = data.results[0];
           console.log("No California result found, using:", selectedResult.formatted_address);
         }
-        
+
         const addressComponents = selectedResult.address_components;
         const countyComponent = addressComponents.find((component: any) =>
           component.types.includes("administrative_area_level_2"),
