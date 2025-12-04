@@ -11,7 +11,9 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
     ],
@@ -28,7 +30,10 @@
       "__tests__",
       "__mocks__"
     ],
-    "coverageReporters": ["json-summary", "text-summary"]
+    "coverageReporters": [
+      "json-summary",
+      "text-summary"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

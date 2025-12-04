@@ -1,5 +1,6 @@
 import { Image, ScrollView, View, Text, TouchableOpacity } from "react-native";
 import { imageMap } from "@/data/shopItem";
+import { useRouter } from "expo-router";
 
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -24,6 +25,7 @@ export default function ShopScreen() {
   const [items, setItems] = useState<any>([]);
   const shopCollection = collection(FB_DB, "shopItems");
   const { shopItems, inventory, purchaseItem } = usePurchaseItem();
+  const router = useRouter();
 
   useEffect(() => {
     fetchShopItems();
@@ -77,7 +79,10 @@ export default function ShopScreen() {
             >
               <TouchableOpacity
                 disabled={inventory.includes(item.id)}
-                onPress={() => purchaseItem(item)}
+                onPress={() => {
+                  purchaseItem(item);
+                  router.push("/(tabs)/shop");
+                }}
               >
                 <Image
                   source={imageMap[item.id]}
