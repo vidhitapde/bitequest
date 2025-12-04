@@ -30,7 +30,7 @@ describe("<Map />", () => {
             emailVerified: false
         };
     });
-
+    //fix api
     test("Text renders correctly on Map screen", () => {
         const { getByText } = render(<Map />);
         expect(getByText("POST")).toBeTruthy();
@@ -78,7 +78,7 @@ describe("<Map />", () => {
         
         const countyComponent = data.results[0].address_components.find((component: any) =>
             component.types.includes("administrative_area_level_2")
-        );
+        ); 
         
         expect(countyComponent).toBeDefined();
         expect(countyComponent.long_name).toBe("Riverside County");
