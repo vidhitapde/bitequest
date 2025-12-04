@@ -92,6 +92,7 @@ export default function SignUp() {
               <Button
                 variant="ghost"
                 size="icon"
+                testID="togglePasswordVisibility"
                 onPress={() => setShowPassword(!showPassword)}
               >
                 
@@ -119,6 +120,7 @@ export default function SignUp() {
             <View className="absolute right-2 top-1/2 transform -translate-y-1/2">
               <Button
                 variant="ghost"
+                testID="togglePasswordVisibility2"
                 size="icon"
                 onPress={() => setShowPassword(!showPassword)}
               >

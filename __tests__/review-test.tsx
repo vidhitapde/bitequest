@@ -54,7 +54,6 @@ describe("<Review />", () => {
         mockUseReview.showResults = false;
         mockUseReview.searchResults = [];
         
-        // Mock a logged-in user
         (FB_AUTH as any).currentUser = {
             uid: 'test-user-uid',
             email: 'test@example.com',
