@@ -3,7 +3,7 @@ module.exports = {
   setupFiles: ['<rootDir>/jest.setup.js'],
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   transformIgnorePatterns: [
-    'node_modules/(?!(expo|@expo(?!/vector-icons)|react-native|@react-native|nativewind|expo-modules-core|expo-font|expo-asset|expo-constants|@rn-primitives|react-native-css-interop|expo-image-picker)/)'
+    'node_modules/(?!(expo|@expo(?!/vector-icons)|react-native|@react-native|nativewind|expo-modules-core|expo-font|expo-asset|expo-constants|@rn-primitives|react-native-css-interop|expo-image-picker|firebase|@firebase)/)'
   ],
   moduleNameMapper: {
     '^.+\\.(png|jpg|jpeg|svg)$': '<rootDir>/__mocks__/styleMock.ts',
@@ -18,7 +18,10 @@ module.exports = {
     '^firebase/auth$': '<rootDir>/__mocks__/firebase.js',
     '^firebase/app$': '<rootDir>/__mocks__/firebase.js',
     '^firebase/firestore$': '<rootDir>/__mocks__/firebase.js',
+    '^firebase/storage$': '<rootDir>/__mocks__/firebase.js',
     '^firebase$': '<rootDir>/__mocks__/firebase.js',
+    '^./firebaseConfig$': '<rootDir>/__mocks__/firebase.js',
+    '^../firebaseConfig$': '<rootDir>/__mocks__/firebase.js',
     '^@react-native-async-storage/async-storage$': '<rootDir>/__mocks__/@react-native-async-storage.js',
     '^@expo/vector-icons$': '<rootDir>/__mocks__/@expo/vector-icons.js',
     '^@expo/vector-icons/(.*)$': '<rootDir>/__mocks__/@expo/vector-icons.js',
