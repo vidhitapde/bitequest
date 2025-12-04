@@ -3,8 +3,10 @@ import { useRouter } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import {
+  DeviceEventEmitter,
   Image,
   ImageBackground,
+  RefreshControl,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -23,18 +25,25 @@ export default function MapScreen() {
   const { user } = useUser();
   const reviewsCollection = collection(FB_DB, "reviews");
   const [visitedCounties, setVisitedCounties] = useState(new Set());
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loggedIn = auth.onAuthStateChanged((currentUser: any) => {
-      if (!currentUser) {
-        router.replace("/");
-      } else {
-        fetchReviews(currentUser);
-      }
+    fetchReviews(user);
+  }, []);
+
+  useEffect(() => {
+    const subscription = DeviceEventEmitter.addListener("reviewsUpdated", () =>{
+      fetchReviews(user);
     });
 
-    return () => loggedIn();
-  }, []);
+    return () => subscription.remove();
+  }, [user]);
+
+  const onRefresh = async () => {
+    setLoading(true);
+    await fetchReviews(user);
+    setLoading(false);
+  };
 
   const fetchReviews = async (currentUser: any) => {
     if (currentUser) {
@@ -83,6 +92,7 @@ export default function MapScreen() {
       setVisitedCounties(new Set());
     }
   };
+
   const getCountyFromAddress = async (restaurantAddress: string) => {
     try {
       let parsedAddress = restaurantAddress;
@@ -157,7 +167,7 @@ export default function MapScreen() {
       resizeMode="cover"
     >
       <View className="flex-1" style={{ backgroundColor: "transparent" }}>
-        <ScrollView className="flex-grow overflow-visible">
+        <ScrollView className="flex-grow overflow-visible" refreshControl={<RefreshControl refreshing={loading} onRefresh={onRefresh} />}>
           <View
             style={{
               flexDirection: "row",

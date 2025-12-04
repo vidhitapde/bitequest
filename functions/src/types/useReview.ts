@@ -1,21 +1,21 @@
+import * as ImagePicker from 'expo-image-picker';
+import { router } from "expo-router";
 import {
   addDoc,
-  deleteDoc,
   collection,
-  getDocs,
-  query,
-  where,
+  deleteDoc,
   doc,
-  updateDoc,
+  getDocs,
   increment,
+  query,
+  updateDoc,
+  where,
 } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
+import { Alert, DeviceEventEmitter } from 'react-native';
 import { useUser } from "../../../app/appprovider";
-import { FB_DB, GOOGLE, FB_STORAGE } from "../../../firebaseConfig.js";
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { router } from "expo-router";
-import { Alert } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { FB_DB, FB_STORAGE, GOOGLE } from "../../../firebaseConfig.js";
 
 export default function useReview() {
   const [rating, setRating] = useState(0);
@@ -203,6 +203,7 @@ export default function useReview() {
     const reviewDoc = doc(FB_DB, 'reviews', id);
     await deleteDoc(reviewDoc);
     fetchReview();
+    DeviceEventEmitter.emit("reviewsUpdated");
   };
 
   return {

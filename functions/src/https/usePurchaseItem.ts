@@ -1,7 +1,7 @@
-import { router } from "expo-router";
 import { useEffect, useState } from "react";
-import { FB_AUTH, FB_DB, GOOGLE } from "../../../firebaseConfig.js";
+import { DeviceEventEmitter } from "react-native";
 import { useUser } from "../../../app/appprovider.tsx";
+import { FB_DB } from "../../../firebaseConfig.js";
 
 import {
   collection,
@@ -69,6 +69,8 @@ export default function usePurchaseItem() {
     console.log(item.price);
     user.balance -= item.price;
     setInventory((prev) => [...prev, item.id]);
+
+    DeviceEventEmitter.emit("reviewsUpdated");
 
     console.log(`Purchased: ${item.id}`);
   };
