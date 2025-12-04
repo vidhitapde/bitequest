@@ -24,12 +24,7 @@ export class User {
       "default-pants",
       "default-rug",
     ];
-    const selectedInventory =
-      raw.inventory && raw.inventory.length > 0
-        ? raw.inventory
-        : defaultInventory;
-
-    console.log("🎯 Final Inventory:", selectedInventory);
+    
     return new User(
       raw.uid,
       raw.email,
