@@ -1,5 +1,4 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
 import {
   Image,
@@ -24,6 +23,7 @@ export default function Profile() {
     photoUri,
     pickImage,
     city,
+    image,
 
   } = useReview();
   const [showAll, setShowAll] = useState(false);
@@ -35,7 +35,6 @@ export default function Profile() {
       <View className="mt-20 relative" style={{ alignSelf: "center" }}>
         <Image source={require("../../assets/images/profile-pic.png")} />
         <TouchableOpacity
-          onPress={() => console.log("Edit button pressed")}
           className="absolute top-48 left-44"
         >
           <Image
@@ -62,8 +61,8 @@ export default function Profile() {
           <View
             key={review.id}
             style={{
-              width: "100%",
-              minHeight: 350,
+              width: "105%",
+              minHeight: review.images && review.images.length > 0 ? 380 : 150,
               alignSelf: "center",
               backgroundColor: "#FEFAE0",
               borderRadius: 20,
@@ -113,8 +112,8 @@ export default function Profile() {
                       key={index}
                       source={{ uri: imgUrl }}
                       style={{
-                        width: 200,
-                        height: 200,
+                        width: 205,
+                        height: 205,
                         borderRadius: 10,
                       }}
                     />
@@ -122,8 +121,8 @@ export default function Profile() {
                 </View>
               )}
               <View className="items-center justify-center"
-                style={{ position: "absolute", bottom: -40 }}>
-                <Text className="text-md text-black text-center mt-2 mb-3" numberOfLines={4} style={{marginTop:30}}>
+                style={{ position: "absolute", bottom: -50 }}>
+                <Text className="text-lg text-black font-baloo2 text-center mt-2 mb-3" numberOfLines={4} style={{ marginTop: 20 }}>
                   {review.reviewText}
                 </Text>
               </View>
