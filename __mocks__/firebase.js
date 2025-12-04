@@ -131,15 +131,36 @@ export const addDoc = jest.fn(() => Promise.resolve({ id: 'mock-review-id' }));
 export const getDocs = jest.fn(() => Promise.resolve({
   docs: []
 }));
-export const where = jest.fn((field, operator, value) => ({
-  field,
-  operator, 
-  value
+export const where = jest.fn(() => ({}));
+export const query = jest.fn(() => ({}));
+
+// Firebase Storage mock
+export const getStorage = jest.fn(() => ({
+  ref: jest.fn(() => ({
+    put: jest.fn(() => Promise.resolve({
+      ref: {
+        getDownloadURL: jest.fn(() => Promise.resolve('https://example.com/test-image.jpg'))
+      }
+    })),
+    getDownloadURL: jest.fn(() => Promise.resolve('https://example.com/test-image.jpg'))
+  }))
 }));
-export const query = jest.fn((collection, ...constraints) => ({
-  collection,
-  constraints
-}));
+
+// Firebase exports
+export const FB_AUTH = mockAuth;
+export const FB_DB = mockFirestore;
+export const FB_APP = { name: 'mock-app' };
+export const GOOGLE = 'mock-google-api-key';
+export const FB_STORAGE = {
+  ref: jest.fn(() => ({
+    put: jest.fn(() => Promise.resolve({
+      ref: {
+        getDownloadURL: jest.fn(() => Promise.resolve('https://example.com/test-image.jpg'))
+      }
+    })),
+    getDownloadURL: jest.fn(() => Promise.resolve('https://example.com/test-image.jpg'))
+  }))
+};
 
 // Default export
 export default {
