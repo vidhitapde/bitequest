@@ -60,7 +60,10 @@ const mockAuth = {
     userStore.set(userKey, { user, password });
     return Promise.resolve({ user });
   }),
-  signOut: jest.fn(() => Promise.resolve()),
+  signOut: jest.fn(() => {
+    mockAuth._currentUser = null;
+    return Promise.resolve();
+  }),
   onAuthStateChanged: jest.fn((callback) => {
     callback(null);
     return jest.fn(); // unsubscribe function
@@ -128,8 +131,15 @@ export const addDoc = jest.fn(() => Promise.resolve({ id: 'mock-review-id' }));
 export const getDocs = jest.fn(() => Promise.resolve({
   docs: []
 }));
-export const where = jest.fn(() => ({}));
-export const query = jest.fn(() => ({}));
+export const where = jest.fn((field, operator, value) => ({
+  field,
+  operator, 
+  value
+}));
+export const query = jest.fn((collection, ...constraints) => ({
+  collection,
+  constraints
+}));
 
 // Default export
 export default {

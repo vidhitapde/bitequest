@@ -97,6 +97,7 @@ export default function LogIn() {
               <Button
                 variant="ghost"
                 size="icon"
+                testID="togglePasswordVisibility"
                 onPress={() => setShowPassword(!showPassword)}
               >
                   <Ionicons
@@ -113,6 +114,7 @@ export default function LogIn() {
               <Checkbox
                 id="terms"
                 checked={state.rememberMe}
+                testID="remember-me-checkbox"
                 onCheckedChange={toggleCheckedState("rememberMe")}
               />
               <Label
