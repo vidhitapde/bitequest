@@ -2,23 +2,21 @@ import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { Textarea } from "@/components/ui/textarea";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
   FlatList,
-  TextInput,
-  TouchableOpacity,
-  View,
+  Image,
   Keyboard,
-  TouchableWithoutFeedback,
-  ScrollView,
   KeyboardAvoidingView,
   Platform,
-  Image,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
 } from "react-native";
-import { FB_AUTH, FB_DB } from "../firebaseConfig";
 import useReview from "../functions/src/types/useReview";
 import "../global.css";
 
@@ -128,6 +126,7 @@ export default function Review() {
                       size={26}
                       color={rating >= star ? "#FFCB2E" : "gray"}
                       onPress={() => setRating(star)}
+                      testID={star.toString()}
                     />
                   ))}
                 </View>

@@ -94,13 +94,13 @@ export default function SignUp() {
                 size="icon"
                 onPress={() => setShowPassword(!showPassword)}
               >
-                <Text className="text-muted-foreground">
+                
                   <Ionicons
                     name={showPassword ? "eye-off" : "eye"}
                     size={24}
                     color="gray"
                   />
-                </Text>
+               
               </Button>
             </View>
           </View>
@@ -122,13 +122,13 @@ export default function SignUp() {
                 size="icon"
                 onPress={() => setShowPassword(!showPassword)}
               >
-                <Text className="text-muted-foreground">
+               
                   <Ionicons
                     name={showPassword ? "eye-off" : "eye"}
                     size={24}
                     color="gray"
                   />
-                </Text>
+               
               </Button>
             </View>
           </View>
