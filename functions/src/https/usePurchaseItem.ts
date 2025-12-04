@@ -1,7 +1,7 @@
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { FB_AUTH, FB_DB, GOOGLE } from "../../../firebaseConfig.js";
-import { useUser } from "../../../app/appprovider";
+import { useUser } from "../../../app/appprovider.tsx";
 
 import {
   collection,

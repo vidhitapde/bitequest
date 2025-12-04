@@ -17,4 +17,15 @@ module.exports = {
     '^\\./Themed$': '<rootDir>/__mocks__/@/components/Themed.tsx',
   },
   testPathIgnorePatterns: ['/node_modules/', '/android/', '/ios/'],
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}"
+  ],
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "__tests__",
+    "__mocks__"
+  ],
+  coverageReporters: ["json-summary", "text-summary"]
 };
