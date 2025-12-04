@@ -1,4 +1,3 @@
-import { FB_AUTH, FB_DB, GOOGLE } from "@/firebaseConfig";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -12,6 +11,7 @@ import {
   View,
 } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
+import { FB_AUTH, FB_DB, GOOGLE } from "../../firebaseConfig";
 import "../../global.css";
 import { useUser } from "../appprovider";
 const { californiaCounties } = require("../geojson2svg");
@@ -25,7 +25,7 @@ export default function MapScreen() {
   const [visitedCounties, setVisitedCounties] = useState(new Set());
 
   useEffect(() => {
-    const loggedIn = auth.onAuthStateChanged((currentUser) => {
+    const loggedIn = auth.onAuthStateChanged((currentUser: any) => {
       if (!currentUser) {
         router.replace("/");
       } else {
@@ -48,18 +48,17 @@ export default function MapScreen() {
           ...doc.data(),
           id: doc.id,
         }));
-        console.log("User reviews fetched:", userReviews);
         setReviews(userReviews);
 
         const counties = new Set();
         for (const review of userReviews) {
-          if ((review as any).restaurantName) {
+          if ((review as any).restaurantFullAddress) {
             const county = await getCountyFromAddress(
-              (review as any).restaurantName,
+              (review as any).restaurantFullAddress,
             );
             console.log(
               "County found for restaurant:",
-              (review as any).restaurantName,
+              (review as any).restaurantFullAddress,
               "-> County:",
               county,
             );
@@ -84,17 +83,43 @@ export default function MapScreen() {
       setVisitedCounties(new Set());
     }
   };
-  const getCountyFromAddress = async (restaurantName: string) => {
+  const getCountyFromAddress = async (restaurantAddress: string) => {
     try {
+      let parsedAddress = restaurantAddress;
+
+      const commaParts = restaurantAddress.split(',');
+      if (commaParts.length > 1) {
+        parsedAddress = commaParts.slice(1).join(',').trim();
+        console.log('address from:', restaurantAddress, 'to:', parsedAddress);
+      }
+      
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(restaurantName + " California")}&key=${GOOGLE}`,
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(parsedAddress)}&key=${GOOGLE}`,
       );
       const data = await response.json();
 
-      console.log("Geocoding API response for", restaurantName, ":", data);
-
       if (data.results && data.results.length > 0) {
-        const addressComponents = data.results[0].address_components;
+        let selectedResult = null;
+        
+        for (const result of data.results) {
+          const stateComponent = result.address_components.find((component: any) =>
+            component.types.includes("administrative_area_level_1")
+          );
+          
+          if (stateComponent && (stateComponent.short_name === "CA" || stateComponent.long_name === "California")) {
+            selectedResult = result;
+            console.log("Found California result:", result.formatted_address);
+            break;
+          }
+        }
+        
+        // If no California result found, use the first result
+        if (!selectedResult) {
+          selectedResult = data.results[0];
+          console.log("No California result found, using:", selectedResult.formatted_address);
+        }
+        
+        const addressComponents = selectedResult.address_components;
         const countyComponent = addressComponents.find((component: any) =>
           component.types.includes("administrative_area_level_2"),
         );
@@ -103,16 +128,16 @@ export default function MapScreen() {
           console.log(
             "Found county:",
             countyName,
-            "for restaurant:",
-            restaurantName,
+            "for address:",
+            parsedAddress,
           );
           return countyName;
         }
       } else {
-        console.log("No results found for:", restaurantName);
+        console.log("No results found for:", parsedAddress);
       }
     } catch (error) {
-      console.error("Error fetching county from restaurant name:", error);
+      console.error("Error fetching county from address:", error);
     }
     return null;
   };
