@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import Map from "../app/(tabs)/map";
-import { FB_AUTH } from "../firebaseConfig";
+import { FB_AUTH, GOOGLE } from "../firebaseConfig";
 
 const mockPush = jest.fn();
 
@@ -30,7 +30,7 @@ describe("<Map />", () => {
             emailVerified: false
         };
     });
-
+    //fix api
     test("Text renders correctly on Map screen", () => {
         const { getByText } = render(<Map />);
         expect(getByText("POST")).toBeTruthy();
@@ -68,17 +68,17 @@ describe("<Map />", () => {
     });
     
     test("Google API Key is present", () => {
-        expect(process.env.API_KEY).toBeDefined();
+        expect(GOOGLE).toBeDefined();
     });
     test("Google API should fetch county data properly", async () => {
-        const apiKey = process.env.API_KEY;
+        const apiKey = GOOGLE;
         const address = "10971 Magnolia Ave, Riverside, CA 92505";
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`);
         const data = await response.json();
         
         const countyComponent = data.results[0].address_components.find((component: any) =>
             component.types.includes("administrative_area_level_2")
-        );
+        ); 
         
         expect(countyComponent).toBeDefined();
         expect(countyComponent.long_name).toBe("Riverside County");
