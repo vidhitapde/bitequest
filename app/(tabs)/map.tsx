@@ -87,10 +87,10 @@ export default function MapScreen() {
     try {
       let parsedAddress = restaurantAddress;
 
-      const commaParts = restaurantAddress.split(',');
+      const commaParts = restaurantAddress.split(",");
       if (commaParts.length > 1) {
-        parsedAddress = commaParts.slice(1).join(',').trim();
-        console.log('address from:', restaurantAddress, 'to:', parsedAddress);
+        parsedAddress = commaParts.slice(1).join(",").trim();
+        console.log("address from:", restaurantAddress, "to:", parsedAddress);
       }
 
       const response = await fetch(
@@ -102,11 +102,16 @@ export default function MapScreen() {
         let selectedResult = null;
 
         for (const result of data.results) {
-          const stateComponent = result.address_components.find((component: any) =>
-            component.types.includes("administrative_area_level_1")
+          const stateComponent = result.address_components.find(
+            (component: any) =>
+              component.types.includes("administrative_area_level_1"),
           );
 
-          if (stateComponent && (stateComponent.short_name === "CA" || stateComponent.long_name === "California")) {
+          if (
+            stateComponent &&
+            (stateComponent.short_name === "CA" ||
+              stateComponent.long_name === "California")
+          ) {
             selectedResult = result;
             console.log("Found California result:", result.formatted_address);
             break;
@@ -116,7 +121,10 @@ export default function MapScreen() {
         // If no California result found, use the first result
         if (!selectedResult) {
           selectedResult = data.results[0];
-          console.log("No California result found, using:", selectedResult.formatted_address);
+          console.log(
+            "No California result found, using:",
+            selectedResult.formatted_address,
+          );
         }
 
         const addressComponents = selectedResult.address_components;
