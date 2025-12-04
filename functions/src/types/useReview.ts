@@ -15,11 +15,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { Alert, DeviceEventEmitter } from 'react-native';
 import { useUser } from "../../../app/appprovider";
-import { FB_DB, GOOGLE, FB_STORAGE } from "../../../firebaseConfig.js";
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { router } from "expo-router";
-import * as ImagePicker from 'expo-image-picker';
-
+import { FB_DB, FB_STORAGE, GOOGLE } from "../../../firebaseConfig.js";
 
 export default function useReview() {
   const [rating, setRating] = useState(0);
@@ -87,18 +83,18 @@ export default function useReview() {
 
   const uploadImage = async (uri: string) => {
     if (!user || !uri) {
-      console.log(`User: ${user}, Image: ${uri}`);
+      console.log(`User: ${user}, Image: ${uri}`); // Add logging to check values
       Alert.alert('No user or image found!');
       return;
     }
 
-    console.log("Attempting to upload image: ", uri);
+    console.log("Attempting to upload image: ", uri); // Log the image URI for debugging
 
     try {
       const response = await fetch(uri);
       const blob = await response.blob();
 
-      console.log("Blob created: ", blob);
+      console.log("Blob created: ", blob); // Log the blob for debugging
 
       const storageRef = ref(FB_STORAGE, `images/${user.uid}/${Date.now()}`);
       await uploadBytes(storageRef, blob);
@@ -182,19 +178,22 @@ export default function useReview() {
   };
 
   // coins, and increments a certain amounnt of points after user adds a review
-  const updateCoins = async (amount: number) => {
-    if (!user) {
+  const updateCoins = async(amount: number) => 
+  {
+    if(!user)
+    {
       console.log("User not logged in or not found")
       return;
     }
     const userRef = doc(FB_DB, "users", user.uid);
-    try {
-      await updateDoc(userRef, {
-        balance: increment(amount)
-      });
-      user.balance += amount;
-    } catch (error) {
-      console.error("Error updating coins: ", error);
+      try{
+        await updateDoc(userRef, {
+          balance: increment(amount)
+        });
+        user.balance += amount;
+      }catch(error)
+      {
+        console.error("Error updating coins: ", error);
 
 
     }
