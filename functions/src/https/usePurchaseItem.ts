@@ -6,6 +6,7 @@ import { FB_DB } from "../../../firebaseConfig.js";
 import {
   collection,
   doc,
+  getDocFromServer,
   getDocs,
   increment,
   updateDoc,
@@ -37,9 +38,13 @@ export default function usePurchaseItem() {
 
   const fetchInventory = async () => {
     if (user) {
-      const owned = user.inventory || [];
+      // const owned = user.inventory || [];
+      const snap = await getDocFromServer(doc(usersCollection, user.uid));
+      if(snap.exists()) {
+        setInventory(snap.data().inventory || []);
+      }
 
-      setInventory(owned);
+      // setInventory(owned);
     } else {
       console.log("No user information found, not logged in");
     }
@@ -71,6 +76,7 @@ export default function usePurchaseItem() {
     setInventory((prev) => [...prev, item.id]);
 
     DeviceEventEmitter.emit("reviewsUpdated");
+    DeviceEventEmitter.emit("inventoryUpdated");
 
     console.log(`Purchased: ${item.id}`);
   };
@@ -79,5 +85,6 @@ export default function usePurchaseItem() {
     shopItems,
     inventory,
     purchaseItem,
+    fetchInventory,
   };
 }
