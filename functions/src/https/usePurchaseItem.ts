@@ -4,15 +4,11 @@ import { FB_AUTH, FB_DB, GOOGLE } from "../../../firebaseConfig.js";
 import { useUser } from "../../../app/appprovider";
 
 import {
-  addDoc,
   collection,
   doc,
-  getDoc,
   getDocs,
   increment,
-  query,
   updateDoc,
-  where,
 } from "firebase/firestore";
 
 export default function usePurchaseItem() {
@@ -41,12 +37,9 @@ export default function usePurchaseItem() {
 
   const fetchInventory = async () => {
     if (user) {
-      const clothing = user.profile.closet.clothing || [];
-      const decor = user.profile.closet.decor || [];
+      const owned = user.inventory || [];
 
-      const combined = [...clothing, ...decor];
-
-      setInventory(combined);
+      setInventory(owned);
     } else {
       console.log("No user information found, not logged in");
     }
@@ -64,7 +57,7 @@ export default function usePurchaseItem() {
       return;
     }
 
-    const userRef = doc(usersCollection, user.email);
+    const userRef = doc(usersCollection, user.uid);
 
     // update inventory in firestore
     await updateDoc(userRef, {
@@ -72,8 +65,8 @@ export default function usePurchaseItem() {
       inventory: [...inventory, item.id],
     });
 
-    console.log(user.balance)
-    console.log(item.price)
+    console.log(user.balance);
+    console.log(item.price);
     user.balance -= item.price;
     setInventory((prev) => [...prev, item.id]);
 

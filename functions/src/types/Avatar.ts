@@ -9,5 +9,5 @@ export const defaultAvatar: Avatar = {
   skinColor: "#FCC6BB",
   hair: "default_hair",
   shirt: "default_shirt",
-  pants: "defualt_pants",
+  pants: "default_pants",
 };
