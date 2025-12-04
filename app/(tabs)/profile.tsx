@@ -28,8 +28,10 @@ export default function Profile() {
     photoUri,
     pickImage,
     city,
+    image,
 
   } = useReview();
+
   const [showAll, setShowAll] = useState(false);
   const displayReviews = showAll ? reviews : reviews.slice(0, 3);
   const [loading, setLoading] = useState(false);
@@ -188,8 +190,8 @@ export default function Profile() {
           <View
             key={review.id}
             style={{
-              width: "100%",
-              minHeight: 350,
+              width: "105%",
+              minHeight: review.images && review.images.length > 0 ? 380 : 150,
               alignSelf: "center",
               backgroundColor: "#FEFAE0",
               borderRadius: 20,
@@ -240,8 +242,8 @@ export default function Profile() {
                       key={index}
                       source={{ uri: imgUrl }}
                       style={{
-                        width: 200,
-                        height: 200,
+                        width: 205,
+                        height: 205,
                         borderRadius: 10,
                       }}
                     />
@@ -249,8 +251,8 @@ export default function Profile() {
                 </View>
               )}
               <View className="items-center justify-center"
-                style={{ position: "absolute", bottom: -40 }}>
-                <Text className="text-md text-black text-center mt-2 mb-3" numberOfLines={4} style={{marginTop:30}}>
+                style={{ position: "absolute", bottom: -50 }}>
+                <Text className="text-lg text-black text-center font-baloo2 mt-2 mb-3" numberOfLines={4} style={{marginTop:30}}>
                   {review.reviewText}
                 </Text>
               </View>
