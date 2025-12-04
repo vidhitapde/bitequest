@@ -7,28 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "test": "jest; node scripts/show-coverage.js"
-  },
-  "jest": {
-    "preset": "jest-expo",
-    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.ts"
-    },
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "app/**/*.{ts,tsx}",
-      "components/**/*.{ts,tsx}"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "__tests__",
-      "__mocks__"
-    ],
-    "coverageReporters": ["json-summary", "text-summary"]
+    "test": "jest && node scripts/show-coverage.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -57,6 +36,7 @@
     "geojson2svg": "^2.0.3",
     "icon-gen": "^5.0.0",
     "jest": "~29.7.0",
+    "jest-expo": "~54.0.13",
     "lucide-react-native": "^0.552.0",
     "nativewind": "^4.2.1",
     "prettier-plugin-tailwindcss": "^0.5.14",
