@@ -205,6 +205,7 @@ export default function Profile() {
               style={{ position: "absolute", top: 10, right: 10 }}>
               <AntDesign
                 name="delete"
+                testID={`delete-review-${review.id}`}
                 size={24}
                 color="red"
               />

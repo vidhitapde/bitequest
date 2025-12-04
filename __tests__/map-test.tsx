@@ -1,9 +1,19 @@
 import { fireEvent, render } from "@testing-library/react-native";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import Map from "../app/(tabs)/map";
 import { FB_AUTH } from "../firebaseConfig";
 
 const mockPush = jest.fn();
+
+// Mock the useUser hook
+const mockUser = {
+    balance: 150,
+    uid: 'test-user-uid',
+    email: 'test@example.com'
+};
+
+jest.mock("../app/appprovider", () => ({
+    useUser: () => ({ user: mockUser })
+}));
 
 jest.mock("expo-router", () => ({
     useRouter: () => ({
@@ -66,4 +76,9 @@ describe("<Map />", () => {
         expect(FB_AUTH.currentUser).toBeNull();
 
     });
-}); 
+    test("User coin balance is displayed correctly", () => {
+        const { getByText } = render(<Map />);
+        
+        expect(getByText("150")).toBeTruthy();
+    });
+});

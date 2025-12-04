@@ -1,8 +1,8 @@
 import { imageMap } from "@/data/closet";
-import {useUser } from "../appprovider"
-import { FB_DB } from "../../firebaseConfig";
 import { useEffect, useState } from "react";
 import { DeviceEventEmitter, Image, RefreshControl, ScrollView, TouchableOpacity, View } from "react-native";
+import { FB_DB } from "../../firebaseConfig";
+import { useUser } from "../appprovider";
 
 import usePurchaseItem from "@/functions/src/https/usePurchaseItem";
 
@@ -135,6 +135,7 @@ export default function Closet() {
           {inventory.map((id: string) => (
             <View
               key={id}
+              testID={`closet-item-${id}`}
               style={{
                 width: "32%", // roughly 3 items per row
                 marginBottom: 24,
@@ -150,6 +151,7 @@ export default function Closet() {
                 <Image
                   source={imageMap[id]}
                   style={{
+                    
                     width: "100%",
                     height: undefined,
                     aspectRatio: 1,
@@ -172,6 +174,7 @@ export default function Closet() {
       >
         <Image
           source={rugImage}
+          testID="rug-image"
           style={{
             width: "70%",
             height: undefined,
@@ -184,6 +187,7 @@ export default function Closet() {
         />
         <Image
           source={hairImage}
+          testID="hair-image"
           style={{
             width: "61%",
             height: undefined,
@@ -207,6 +211,7 @@ export default function Closet() {
         />
         <Image
           source={shirtImage}
+          testID="shirt-image"
           style={{
             width: "39%",
             height: undefined,
@@ -219,6 +224,7 @@ export default function Closet() {
         />
         <Image
           source={pantsImage}
+          testID="pants-image"
           style={{
             marginTop: -160,
             width: "30%",
