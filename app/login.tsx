@@ -97,13 +97,12 @@ export default function LogIn() {
                 size="icon"
                 onPress={() => setShowPassword(!showPassword)}
               >
-                <Text className="text-muted-foreground">
                   <Ionicons
                     name={showPassword ? "eye" : "eye-off"}
                     size={24}
                     color="gray"
                   />
-                </Text>
+               
               </Button>
             </View>
           </View>
