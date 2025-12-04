@@ -1,6 +1,10 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { imageMap } from "@/data/closet";
+import { useUser } from "../appprovider"
+import { DeviceEventEmitter, RefreshControl } from "react-native";
+
 import {
   Image,
   ImageBackground,
@@ -28,24 +32,146 @@ export default function Profile() {
   } = useReview();
   const [showAll, setShowAll] = useState(false);
   const displayReviews = showAll ? reviews : reviews.slice(0, 3);
+  const [loading, setLoading] = useState(false);
+  const [hairImage, setHairImage] = useState(null);
+  const [shirtImage, setShirtImage] = useState(null);
+  const [pantsImage, setPantsImage] = useState(null);
+  const [rugImage, setRugImage] = useState(null);
+
+
+  const { user, refreshUser } = useUser();
+
+  const updateAvatarImages = async (currUser: any) => {
+    const avatar = currUser.profile?.avatar;
+    setHairImage(imageMap[avatar?.hair ?? "default-hair"]);
+    setShirtImage(imageMap[avatar?.shirt ?? "default-shirt"]);
+    setPantsImage(imageMap[avatar?.pants ?? "default-pants"]);
+    setRugImage(imageMap[avatar?.rug ?? "default-rug"]);
+  };
+
+  useEffect(() => {
+    updateAvatarImages(user);
+  }, [user]);
+
+  useEffect(() => {
+    const sub = DeviceEventEmitter.addListener("avatarUpdated", () => {
+      updateAvatarImages(user);
+    });
+
+    return () => sub.remove();
+  }, [user]);
+
+  const onRefresh = async () => {
+    setLoading(true);
+
+    updateAvatarImages(user);
+
+    setLoading(false);
+  };
+
+  // const selectedHair = user?.profile?.avatar?.hair ?? "default-hair";
+  // const selectedShirt = user?.profile?.avatar?.shirt ?? "default-shirt";
+  // const selectedPants = user?.profile?.avatar?.pants ?? "default-pants";
+  // const selectedRug = user?.profile?.avatar?.rug ?? "default-rug";
+
+  // const hairImage = imageMap[selectedHair];
+  // const shirtImage = imageMap[selectedShirt];
+  // const pantsImage = imageMap[selectedPants];
+  // const rugImage = imageMap[selectedRug];
 
   return (
     <ScrollView className="flex-grow bg-[#EEF9F9] "
-      contentContainerStyle={{ paddingBottom: 10 }}>
-      <View className="mt-20 relative" style={{ alignSelf: "center" }}>
-        <Image source={require("../../assets/images/profile-pic.png")} />
-        <TouchableOpacity
-          onPress={() => console.log("Edit button pressed")}
-          className="absolute top-48 left-44"
-        >
-          <Image
-            source={require("../../assets/images/editButton.png")}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      </View>
-      <View className="px-10 mt-8 justify-center space-y-3 pb-10">
-        <Text className="text-4xl justify-left text-[#723D46] font-balooregular leading-tight">
+      contentContainerStyle={{ paddingBottom: 10 }}
+      refreshControl={<RefreshControl refreshing={loading} onRefresh={onRefresh} />}
+      >
+        <View
+            style={{
+              marginTop: 310,
+              width: 200,
+              height: 100,
+              position: "relative",
+              alignSelf: "center",
+            }}
+          >
+            <View
+              style={{
+                position: "absolute",
+                top: "-235%",
+                left: "-11%",
+                width: 240,
+                height: 240,
+                borderRadius: 200,
+                backgroundColor: "#F6BD60",
+                borderWidth: 3,
+                borderColor: "#723D46",
+                zIndex: -1,
+              }}
+            />
+            <View
+              style={{
+                position: "absolute",
+                top: "-225%",
+                left: "-6%",
+                width: 220,
+                height: 220,
+                borderRadius: 200,
+                backgroundColor: "#FEFAE0",
+                borderWidth: 3,
+                borderColor: "#723D46",
+                zIndex: -1,
+              }}
+            />
+            <Image
+              source={hairImage}
+              style={{
+                width: "61%",
+                height: undefined,
+                resizeMode: "contain",
+                aspectRatio: 1,
+                position: "absolute",
+                top: "-220%",
+                left: "19%",
+              }}
+            />
+            <Image
+              source={require("../../assets/avatar/body.png")}
+              style={{
+                marginTop: -160,
+                width: "100%",
+                height: undefined,
+                resizeMode: "contain",
+                aspectRatio: 1.4,
+                position: "absolute",
+              }}
+            />
+            <Image
+              source={shirtImage}
+              style={{
+                width: "39%",
+                height: undefined,
+                resizeMode: "contain",
+                aspectRatio: 1,
+                position: "absolute",
+                top: "-117.8%",
+                left: "30%",
+              }}
+            />
+            <Image
+              source={pantsImage}
+              style={{
+                marginTop: -160,
+                width: "30%",
+                height: undefined,
+                resizeMode: "contain",
+                aspectRatio: 1,
+                position: "absolute",
+                top: "91%",
+                left: "34.5%",
+              }}
+            />
+          </View>
+      <View className="px-10 justify-center space-y-3 pb-10">
+        <Text className="text-4xl mt-[-50] justify-left text-[#723D46] font-balooregular leading-tight">
           Reviews
         </Text>
         <Text>
