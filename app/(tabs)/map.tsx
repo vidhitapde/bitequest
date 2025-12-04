@@ -26,6 +26,9 @@ export default function MapScreen() {
   const reviewsCollection = collection(FB_DB, "reviews");
   const [visitedCounties, setVisitedCounties] = useState(new Set());
   const [loading, setLoading] = useState(false);
+  auth.onAuthStateChanged((user) => {
+    if(!user) router.replace('/');
+  })
 
   useEffect(() => {
     fetchReviews(user);
