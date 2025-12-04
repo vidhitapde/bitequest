@@ -1,8 +1,5 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { FB_DB } from "../../../firebaseConfig";
-// import { Closet } from "./Closet";
-// import { Clothing } from "./Clothing";
-// import { Decor } from "./Decor";
 import { Profile } from "./Profile";
 
 export class User {
@@ -13,7 +10,12 @@ export class User {
     public balance: number = 50,
     public profile: Profile = new Profile(name),
     public locations: Map<string, Location> = new Map(),
-    public inventory: string[] = [],
+    public inventory: string[] = [
+      "default-hair",
+      "default-shirt",
+      "default-pants",
+      "default-rug",
+    ],
   ) {}
 
   static fromFirestore(raw: any): User {
@@ -63,21 +65,6 @@ export class UserRepo {
   }
 
   static async save(user: User): Promise<void> {
-    // const userRef = doc(FB_DB, "users", user.uid);
-    // const snap = await getDoc(userRef);
-
-    // if (!snap.exists()) {
-    //   // New user: ensure defaults are set
-    //   const defaultInventory = ["default-hair", "default-shirt", "default-pants", "default-rug"];
-    //   await setDoc(userRef, {
-    //     ...user.toFirestore(),
-    //     balance: 50,
-    //     inventory: defaultInventory
-    //   });
-    // } else {
-    //   // Existing user: save normally (preserves current balance and inventory)
-    //   await setDoc(userRef, user.toFirestore());
-    // }
     await setDoc(doc(FB_DB, "users", user.uid), user.toFirestore());
   }
 }
