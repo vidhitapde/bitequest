@@ -6,6 +6,8 @@ import {
   query,
   where,
   doc,
+  updateDoc,
+  increment,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useUser } from "../../../app/appprovider";
@@ -167,12 +169,35 @@ export default function useReview() {
       images: uploadedUrls,
       city: city,
     });
+    await updateCoins(20);
     setRating(0);
     setReviewText("");
     fetchReview();
     setPhotoUri(null);;
     router.push("/(tabs)/map");
   };
+
+  // coins, and increments a certain amounnt of points after user adds a review
+  const updateCoins = async(amount: number) => 
+  {
+    if(!user)
+    {
+      console.log("User not logged in or not found")
+      return;
+    }
+    const userRef = doc(FB_DB, "users", user.uid);
+      try{
+        await updateDoc(userRef, {
+          balance: increment(amount)
+        });
+        user.balance += amount;
+      }catch(error)
+      {
+        console.error("Error updating coins: ", error);
+
+
+    }
+  }
 
   const deleteReview = async (id: string) => {
     const reviewDoc = doc(FB_DB, 'reviews', id);

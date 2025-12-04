@@ -49,7 +49,7 @@ export default function Review() {
           <Entypo name="chevron-left" size={48} color="#723D46" left="-160" />
         </Button>
       </View>
-      <View className="mt-16 w-5/6 mx-auto">
+      <View className="w-5/6 mx-auto">
         <View className="flex-row items-center mx-auto border-b-2 py-6 border-[#723D46]">
           <MaterialIcons
             name="restaurant"
