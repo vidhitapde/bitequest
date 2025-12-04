@@ -5,6 +5,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 import { useRouter } from "expo-router";
+import React from "react";
 import {
   FlatList,
   TextInput,
@@ -27,9 +28,7 @@ export default function Review() {
     setRating,
     reviewText,
     setReviewText,
-    reviews,
     addReview,
-    fetchReview,
     selectedRestaurant,
     searchText,
     showResults,
@@ -39,6 +38,7 @@ export default function Review() {
     selectRestaurant,
     pickImage,
     photoUri,
+    city,
   } = useReview();
   const router = useRouter();
 
@@ -69,6 +69,7 @@ export default function Review() {
             data={[]}
             renderItem={() => null}
             keyboardShouldPersistTaps="handled"
+            contentContainerStyle={{ paddingBottom: 400 }}
             ListHeaderComponent={
               <View className="mt-6 mb-4">
                 <Text className="text-center font-baloo2 text-2xl mt-2 mb-2">
@@ -125,7 +126,7 @@ export default function Review() {
                       key={star}
                       name="star"
                       size={26}
-                      color={rating >= star ? "yellow" : "gray"}
+                      color={rating >= star ? "#FFCB2E" : "gray"}
                       onPress={() => setRating(star)}
                     />
                   ))}
@@ -145,21 +146,23 @@ export default function Review() {
                     />
                   </View>
                 </TouchableWithoutFeedback>
-                <Button onPress={pickImage}>
-                  <Text className="bg-[#723D46] m-6 mt-12 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
+                <Button onPress={pickImage} className="bg-[#723D46] m-6 mt-12 p-2 px-10 rounded-full" >
+                  <Text className="text-xl text-[#FEFAE0] ">
                     Upload Photo
                   </Text>
                 </Button>
 
                 {photoUri && (
-                  <Image
-                    source={{ uri: photoUri }}
-                    style={{ width: 100, height: 100, borderRadius: 10 }}
-                  />
+                  <View className="justify-center items-center">
+                    <Image source={{ uri: photoUri }}
+                      style={{ width: 200, height: 200, borderRadius: 10 }}
+                    />
+                  </View>
+
                 )}
 
-                <Button onPress={addReview}>
-                  <Text className="bg-[#723D46] m-6 mt-12 text-xl text-[#FEFAE0] p-2 px-10 rounded-full">
+                <Button onPress={addReview} className="bg-[#723D46] m-6 mt-12 mb-5 p-2 px-10 rounded-full">
+                  <Text className="text-xl text-[#FEFAE0] ">
                     Post
                   </Text>
                 </Button>
