@@ -28,7 +28,26 @@ describe("<SignUp />", () => {
             fireEvent.changeText(emailInput, "test@example.com");
             expect(emailInput.props.value).toBe("test@example.com");
         });
-
+    test("Pressing eye icon shows your password", () => {
+        const { getByPlaceholderText, getByTestId } = render(<SignUp />);
+        const passwordInput = getByPlaceholderText("Enter your password");
+        const eyeIcon = getByTestId("togglePasswordVisibility");
+        expect(passwordInput.props.secureTextEntry).toBe(true);
+        fireEvent.press(eyeIcon);
+        expect(passwordInput.props.secureTextEntry).toBe(false);
+        fireEvent.press(eyeIcon);
+        expect(passwordInput.props.secureTextEntry).toBe(true);
+    });
+    test("Pressing second eye icon shows your password", () => {
+        const { getByPlaceholderText, getByTestId } = render(<SignUp />);
+        const passwordInput = getByPlaceholderText("Enter your password");
+        const eyeIcon = getByTestId("togglePasswordVisibility2");
+        expect(passwordInput.props.secureTextEntry).toBe(true);
+        fireEvent.press(eyeIcon);
+        expect(passwordInput.props.secureTextEntry).toBe(false);
+        fireEvent.press(eyeIcon);
+        expect(passwordInput.props.secureTextEntry).toBe(true);
+    });
     test("Name input field is present and functional", () => {
             const { getByPlaceholderText } = render(<SignUp />);
             const nameInput = getByPlaceholderText("Name");

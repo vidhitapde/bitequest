@@ -41,6 +41,7 @@ module.exports = {
   ],
   coverageReporters: [
     'json-summary',
-    'text-summary'
+    'text-summary',
+    'text',
   ]
 };

@@ -10,7 +10,6 @@ const mockRouter = {
   canGoBack: jest.fn(() => true),
 };
 
-// Allow tests to access and override the mock functions
 const setMockPush = (fn) => {
   mockPush = fn;
   mockRouter.push = fn;
