@@ -8,6 +8,9 @@ jest.mock('expo-router', () => ({
 
 // Mock internal Expo Router modules causing Jest import issues
 jest.mock('expo/src/winter/runtime.native', () => ({}));
+
+// Mock global alert function
+global.alert = jest.fn();
 jest.mock('expo/src/winter/installGlobal', () => ({
   __ExpoImportMetaRegistry: {},
 }));
