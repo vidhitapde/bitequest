@@ -1,0 +1,8 @@
+npm install
+npm install firebase
+npm install -g firebase-tools
+npx expo install expo@latest @react-native-async-storage/async-storage@latest
+
+npx expo install jest-expo jest
+npm install --save-dev @testing-library/react-native
+npm i -D @types/jest @testing-library/react-native @testing-library/jest-native
