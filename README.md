@@ -6,7 +6,11 @@ Nichole Godfrey <nichole.godfrey@email.ucr.edu>
 Rachel Chan <rachel.chan@email.ucr.edu>
 Osanna Deng <osanna.deng@email.ucr.edu>
 
+DOWNLOAD DEPENDENCIES:
+sh dependencies
+
 TO RUN:
 npx expo start
+
 TO TEST:
 npm test
