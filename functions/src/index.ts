@@ -35,7 +35,3 @@ import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 admin.initializeApp();
 export const db = admin.firestore();
-
-// export * from "./triggers/reviewTriggers";
-// export * from "./https/buyAccessory";
-// export * from "./https/equipAccessory";
