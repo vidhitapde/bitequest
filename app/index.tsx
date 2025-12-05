@@ -1,6 +1,6 @@
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Text, View } from "react-native";
 import "../global.css";
 
@@ -27,7 +27,7 @@ export default function Loading() {
     <View className="flex-1 bg-[#E9EDC9]">
       <View className="flex-1 items-center justify-center">
         <Text className="text-[43px] text-[#723D46] font-balooregular">
-          BiteQuest
+          BiteQuest 
         </Text>
       </View>
     </View>

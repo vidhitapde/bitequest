@@ -35,7 +35,8 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     'app/**/*.{ts,tsx}',
-    'components/**/*.{ts,tsx}'
+    'components/**/*.{ts,tsx}',
+    'functions/src/**/*.ts'
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',

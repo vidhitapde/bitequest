@@ -15,7 +15,19 @@ const setMockPush = (fn) => {
   mockRouter.push = fn;
 };
 
+const Tabs = ({ children }) => children;
+Tabs.Screen = ({ children }) => children;
+Tabs.Screen.displayName = "Tabs.Screen";
+Tabs.displayName = "Tabs";
+
+const Stack = ({ children }) => children;
+Stack.Screen = ({ children }) => children;
+Stack.Screen.displayName = "Stack.Screen";
+Stack.displayName = "Stack";
+
 module.exports = {
+  Tabs,
+  Stack,
   useRouter: () => mockRouter,
   router: mockRouter,
   Link: ({ children }) => children,
