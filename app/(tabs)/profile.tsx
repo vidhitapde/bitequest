@@ -6,7 +6,6 @@ import { DeviceEventEmitter, RefreshControl } from "react-native";
 
 import {
   Image,
-  ImageBackground,
   ScrollView,
   Text,
   TouchableOpacity,

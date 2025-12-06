@@ -5,7 +5,6 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
-import React from "react";
 import {
   FlatList,
   Image,
@@ -36,7 +35,6 @@ export default function Review() {
     selectRestaurant,
     pickImage,
     photoUri,
-    city,
   } = useReview();
   const router = useRouter();
 
