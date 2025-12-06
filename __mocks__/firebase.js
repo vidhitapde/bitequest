@@ -1,7 +1,5 @@
-// In-memory store for created users
 const userStore = new Map();
 
-// Mock Firebase Auth with realistic behavior
 const createMockUser = (email, displayName = null) => ({
   uid: `uid-${Math.random().toString(36).substr(2, 9)}`,
   email,
@@ -35,14 +33,12 @@ const mockAuth = {
       return Promise.reject(error);
     }
     
-    // Check for missing password
     if (!password || password.trim() === '') {
       const error = new Error('Firebase: Error (auth/missing-password).');
       error.code = 'auth/missing-password';
       return Promise.reject(error);
     }
     
-    // Check for  password less than 6 characters
     if (password.length < 6) {
       const error = new Error('Firebase: Password should be at least 6 characters (auth/weak-password).');
       error.code = 'auth/weak-password';
@@ -71,7 +67,6 @@ const mockAuth = {
   updateProfile: jest.fn(() => Promise.resolve()),
 };
 
-// Mock Firestore
 const mockFirestore = {
   collection: jest.fn(() => ({
     doc: jest.fn(() => ({
@@ -87,7 +82,6 @@ const mockFirestore = {
   })),
 };
 
-// Firebase Auth exports
 export const createUserWithEmailAndPassword = mockAuth.createUserWithEmailAndPassword;
 export const signInWithEmailAndPassword = mockAuth.signInWithEmailAndPassword;
 export const signOut = mockAuth.signOut;
@@ -95,11 +89,9 @@ export const onAuthStateChanged = mockAuth.onAuthStateChanged;
 export const updateProfile = mockAuth.updateProfile;
 export const sendPasswordResetEmail = jest.fn(() => Promise.resolve());
 
-// Firebase App exports
 export const initializeApp = jest.fn(() => ({ name: 'mock-app' }));
 export const getAuth = jest.fn(() => mockAuth);
 
-// Firebase Firestore exports
 export const getFirestore = jest.fn(() => mockFirestore);
 export const getReactNativePersistence = jest.fn();
 export const initializeAuth = jest.fn(() => mockAuth);
@@ -135,7 +127,6 @@ export const deleteDoc = jest.fn(() => Promise.resolve());
 export const where = jest.fn(() => ({}));
 export const query = jest.fn(() => ({}));
 
-// Firebase Storage mock
 export const getStorage = jest.fn(() => ({
   ref: jest.fn(() => ({
     put: jest.fn(() => Promise.resolve({
@@ -147,7 +138,6 @@ export const getStorage = jest.fn(() => ({
   }))
 }));
 
-// Firebase exports
 export const FB_AUTH = mockAuth;
 export const FB_DB = mockFirestore;
 export const FB_APP = { name: 'mock-app' };
@@ -163,7 +153,6 @@ export const FB_STORAGE = {
   }))
 };
 
-// Default export
 export default {
   auth: () => mockAuth,
   firestore: () => mockFirestore,

@@ -9,8 +9,7 @@ describe("<Root />", () => {
   test("renders HTML structure correctly", () => {
     const mockChildren = <div>Test Children</div>;
     const renderResult = render(<Root>{mockChildren}</Root>);
-    
+
     expect(renderResult).toBeDefined();
   });
-  
 });

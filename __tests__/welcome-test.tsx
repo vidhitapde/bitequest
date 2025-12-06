@@ -8,34 +8,31 @@ jest.mock("expo-router", () => ({
   }),
 }));
 
-
-
 describe("<Welcome />", () => {
-    beforeEach(() => {
-        mockPush.mockClear();
-    });
+  beforeEach(() => {
+    mockPush.mockClear();
+  });
 
-    test("Text renders correctly on Welcome screen", () => {
-        const { getByText } = render(<Welcome />);
-        expect(getByText("Welcome!")).toBeTruthy();
-    });
+  test("text renders correctly on Welcome screen", () => {
+    const { getByText } = render(<Welcome />);
+    expect(getByText("Welcome!")).toBeTruthy();
+  });
 
-    test("Navigates to Sign Up screen on button press", () => {
-        const { getByText } = render(<Welcome />);
-        const signUpButton = getByText("Sign Up");
+  test("navigates to Sign Up screen on button press", () => {
+    const { getByText } = render(<Welcome />);
+    const signUpButton = getByText("Sign Up");
 
-        fireEvent.press(signUpButton);
+    fireEvent.press(signUpButton);
 
-        expect(mockPush).toHaveBeenCalledWith("/signup");
-    });
+    expect(mockPush).toHaveBeenCalledWith("/signup");
+  });
 
-    test("Navigates to Login screen on button press", () => {
-        const { getByText } = render(<Welcome />);
-        const loginButton = getByText("Login");
+  test("navigates to Login screen on button press", () => {
+    const { getByText } = render(<Welcome />);
+    const loginButton = getByText("Login");
 
-        fireEvent.press(loginButton);
+    fireEvent.press(loginButton);
 
-        expect(mockPush).toHaveBeenCalledWith("/login");
-    });
+    expect(mockPush).toHaveBeenCalledWith("/login");
+  });
 });
-

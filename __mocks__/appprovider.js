@@ -1,6 +1,6 @@
 // Mock for appprovider used in tests
 const mockUser = {
-  uid: 'test-user-uid',
+  uid: 'uid1',
   email: 'test@example.com',
   displayName: 'Test User',
   photoURL: null,
