@@ -38,13 +38,11 @@ export default function usePurchaseItem() {
 
   const fetchInventory = async () => {
     if (user) {
-      // const owned = user.inventory || [];
       const snap = await getDocFromServer(doc(usersCollection, user.uid));
       if(snap.exists()) {
         setInventory(snap.data().inventory || []);
       }
 
-      // setInventory(owned);
     } else {
       console.log("No user information found, not logged in");
     }

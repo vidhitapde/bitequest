@@ -28,7 +28,6 @@ export default function useReview() {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [showResults, setShowResults] = useState(false);
-  const [image, setImage] = useState<any>(null);
   const [images, setImages] = useState<any[]>([]);
   const [photoUri, setPhotoUri] = useState<string | null>(null);
 
@@ -83,18 +82,18 @@ export default function useReview() {
 
   const uploadImage = async (uri: string) => {
     if (!user || !uri) {
-      console.log(`User: ${user}, Image: ${uri}`); // Add logging to check values
+      // console.log(`User: ${user}, Image: ${uri}`); // Add logging to check values
       Alert.alert('No user or image found!');
       return;
     }
 
-    console.log("Attempting to upload image: ", uri); // Log the image URI for debugging
+    // console.log("Attempting to upload image: ", uri); // Log the image URI for debugging
 
     try {
       const response = await fetch(uri);
       const blob = await response.blob();
 
-      console.log("Blob created: ", blob); // Log the blob for debugging
+      // console.log("Blob created: ", blob); // Log the blob for debugging
 
       const storageRef = ref(FB_STORAGE, `images/${user.uid}/${Date.now()}`);
       await uploadBytes(storageRef, blob);
@@ -228,10 +227,4 @@ export default function useReview() {
     city,
 
   };
-
-  // const updateReview = async(id: string) =>
-  // {
-  //   const reviewDoc = doc(FB_DB, 'reviews', id);
-  //   fetchReview();
-  // }
 };
