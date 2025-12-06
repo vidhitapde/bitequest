@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "expo-router";
 import { FB_AUTH } from "../firebaseConfig";
 import { sendPasswordResetEmail } from "firebase/auth";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function ForgotPassword() {
   const router = useRouter();

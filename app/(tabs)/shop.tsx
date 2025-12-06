@@ -2,9 +2,8 @@ import { Image, ScrollView, View, Text, TouchableOpacity } from "react-native";
 import { imageMap } from "@/data/shopItem";
 import { useRouter } from "expo-router";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { FB_AUTH } from "@/firebaseConfig";
 import { FB_DB } from "@/firebaseConfig";
 
 import usePurchaseItem from "@/functions/src/https/usePurchaseItem";
@@ -24,7 +23,7 @@ export interface ShopItem {
 export default function ShopScreen() {
   const [items, setItems] = useState<any>([]);
   const shopCollection = collection(FB_DB, "shopItems");
-  const { shopItems, inventory, purchaseItem } = usePurchaseItem();
+  const { inventory, purchaseItem } = usePurchaseItem();
   const router = useRouter();
 
   useEffect(() => {
