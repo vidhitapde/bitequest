@@ -23,6 +23,8 @@ export default function Loading() {
     return () => clearTimeout(timer);
   }, [router]);
 
+  if (!fonts) { return null; }
+
   return (
     <View className="flex-1 bg-[#E9EDC9]">
       <View className="flex-1 items-center justify-center">
