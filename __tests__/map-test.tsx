@@ -1,6 +1,9 @@
-import { fireEvent, render } from "@testing-library/react-native";
-import Map from "../app/(tabs)/map";
+import { fireEvent, render, act, waitFor } from "@testing-library/react-native";
+import { getDocs } from 'firebase/firestore';
 import { FB_AUTH } from "../firebaseConfig";
+import { DeviceEventEmitter } from 'react-native';
+
+import Map from "../app/(tabs)/map";
 
 const mockPush = jest.fn();
 
@@ -14,6 +17,9 @@ const mockUser = {
 jest.mock("../app/appprovider", () => ({
     useUser: () => ({ user: mockUser })
 }));
+
+const mockedGetDocs = getDocs as jest.MockedFunction<typeof getDocs>;
+
 
 jest.mock("expo-router", () => ({
     useRouter: () => ({
@@ -31,6 +37,7 @@ jest.mock("expo-router", () => ({
 
 describe("<Map />", () => {
     beforeEach(() => {
+        jest.clearAllMocks();
         mockPush.mockClear();
         (global.alert as jest.Mock).mockClear();
         (FB_AUTH as any).currentUser = {
@@ -80,5 +87,57 @@ describe("<Map />", () => {
         const { getByText } = render(<Map />);
         
         expect(getByText("150")).toBeTruthy();
+    });
+    test('calls Google geocode API when review contains restaurantFullAddress', async () => {
+      // mock getDocs to return one review that contains restaurantFullAddress
+      mockedGetDocs.mockResolvedValueOnce({
+        docs: [
+          {
+            id: 'r1',
+            data: () => ({
+              userId: 'test-user-uid',
+              restaurantFullAddress: 'Place, Los Angeles, CA',
+            }),
+          },
+        ],
+      } as any);
+    
+      // Mock fetch response for Google Geocode API
+      (global as any).fetch = jest.fn().mockResolvedValueOnce({
+        json: async () => ({
+          results: [
+            {
+              formatted_address: 'Los Angeles, CA, USA',
+              address_components: [
+                { long_name: 'Los Angeles County', types: ['area1'] },
+                { long_name: 'California', short_name: 'CA', types: ['area2'] },
+              ],
+            },
+          ],
+        }),
+      });
+    
+      render(<Map />);
+    
+      await waitFor(() => {
+        expect(mockedGetDocs).toHaveBeenCalled();
+        expect((global as any).fetch).toHaveBeenCalled();
+      });
+    });
+    
+    test('refetch reviews when reviewsUpdated', async () => {
+      mockedGetDocs.mockResolvedValue({ docs: [] } as any);
+    
+      render(<Map />);
+    
+      // initial call
+      await waitFor(() => expect(mockedGetDocs).toHaveBeenCalledTimes(1));
+    
+      // trigger fetchReviews again
+      act(() => {
+        DeviceEventEmitter.emit('reviewsUpdated');
+      });
+    
+      await waitFor(() => expect(mockedGetDocs).toHaveBeenCalledTimes(2));
     });
 });
