@@ -46,4 +46,7 @@ yarn-error.*
 # coverage summary
 coverage/
 
+# outputs
+/testoutput
+
 .env
