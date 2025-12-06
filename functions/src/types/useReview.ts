@@ -220,6 +220,8 @@ export default function useReview() {
     setSearchText,
     searchRestaurants,
     selectRestaurant,
+    setSelectedRestaurant,
+    setCity,
     deleteReview,
     photoUri,
     pickImage,

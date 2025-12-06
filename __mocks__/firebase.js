@@ -131,6 +131,7 @@ export const addDoc = jest.fn(() => Promise.resolve({ id: 'mock-review-id' }));
 export const getDocs = jest.fn(() => Promise.resolve({
   docs: []
 }));
+export const deleteDoc = jest.fn(() => Promise.resolve());
 export const where = jest.fn(() => ({}));
 export const query = jest.fn(() => ({}));
 
