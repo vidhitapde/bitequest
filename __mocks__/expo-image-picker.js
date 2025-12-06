@@ -8,7 +8,7 @@ const mockImagePicker = {
   
   launchImageLibraryAsync: jest.fn(() => 
     Promise.resolve({
-      cancelled: false,
+      canceled: false,
       assets: [{
         uri: 'mock-image-uri',
         width: 100,
@@ -20,7 +20,7 @@ const mockImagePicker = {
   
   launchCameraAsync: jest.fn(() => 
     Promise.resolve({
-      cancelled: false,
+      canceled: false,
       assets: [{
         uri: 'mock-camera-uri',
         width: 100,

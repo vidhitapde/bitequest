@@ -43,7 +43,7 @@ export default function Review() {
   return (
     <View className="flex-1 bg-[#FEFAE0]">
       <View className="mt-20">
-        <Button onPress={() => router.push("/(tabs)/map")}>
+        <Button testID="backbutton" onPress={() => router.push("/(tabs)/map")}>
           <Entypo name="chevron-left" size={48} color="#723D46" left="-160" />
         </Button>
       </View>

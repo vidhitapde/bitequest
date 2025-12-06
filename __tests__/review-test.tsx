@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react-native";
+import { fireEvent, render} from "@testing-library/react-native";
 import Review from "../app/review";
 import { FB_AUTH } from "../firebaseConfig";
 
@@ -62,12 +62,20 @@ describe("<Review />", () => {
             emailVerified: false
         };
     });
+    test("navigates back to map when button is pressed",() => {
+        const { getByTestId } = render(<Review />);
+        const backButton = getByTestId("backbutton");
+        expect(backButton).toBeTruthy();
+        fireEvent.press(backButton);
+        expect(mockPush).toHaveBeenCalledWith("/(tabs)/map");
+    });
 
     test("Text renders correctly on Review screen", () => {
         const { getByText } = render(<Review />);
         expect(getByText("Write a review")).toBeTruthy();
         expect(getByText("Leave a rating")).toBeTruthy();
     });
+
     
     test("Restaurants can be searched and selected", () => {
         mockUseReview.searchText = "Eureka!";
