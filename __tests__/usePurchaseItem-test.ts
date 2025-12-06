@@ -42,7 +42,7 @@ describe("usePurchaseItem", () => {
     jest.mocked(firestore.doc).mockReturnValue({ id: "mock" } as any);
   });
 
-  it("fetches shop items on mount", async () => {
+  test("fetches shop items on mount", async () => {
     const mockShopItems = [
       { id: "item1", price: 50 },
       { id: "item2", price: 150 },
@@ -66,7 +66,7 @@ describe("usePurchaseItem", () => {
     });
   });
 
-  it("fetches user inventory on mount", async () => {
+  test("fetches user inventory on mount", async () => {
     const mockInventory = ["item1"];
     
     jest.mocked(firestore.getDocFromServer).mockResolvedValue({
@@ -83,7 +83,7 @@ describe("usePurchaseItem", () => {
     });
   });
 
-  it("block purchase if balance is too low", async () => {
+  test("block purchase if balance is too low", async () => {
     const poorUser = { uid: "user1", balance: 10, inventory: [] };
     jest.mocked(useUser).mockReturnValue({ user: poorUser });
     
@@ -103,7 +103,7 @@ describe("usePurchaseItem", () => {
     alertSpy.mockRestore();
   });
 
-  it("block purchase if item is already owned", async () => {
+  test("block purchase if item is already owned", async () => {
     const userWithSword = { uid: "user1", balance: 500, inventory: [] };
     jest.mocked(useUser).mockReturnValue({ user: userWithSword });
 
@@ -124,7 +124,7 @@ describe("usePurchaseItem", () => {
     expect(firestore.updateDoc).not.toHaveBeenCalled();
   });
 
-  it("does not fetch inventory if user is not logged in", async () => {
+  test("does not fetch inventory if user is not logged in", async () => {
     jest.mocked(useUser).mockReturnValue({ user: null });
 
     const { result } = renderHook(() => usePurchaseItem());
@@ -135,7 +135,7 @@ describe("usePurchaseItem", () => {
     expect(result.current.inventory).toEqual([]);
   });
 
-  it("successfully purchases item: updates firestore + local state, emits events", async () => {
+  test("successfully purchases item: updates firestore + local state, emits events", async () => {
     const richUser = { uid: "user1", balance: 100, inventory: [] };
     jest.mocked(useUser).mockReturnValue({ user: richUser });
 
@@ -166,7 +166,7 @@ describe("usePurchaseItem", () => {
     expect(DeviceEventEmitter.emit).toHaveBeenCalledWith("inventoryUpdated");
   });
 
-  it("defaults inventory to empty array if no inventory field in firestore", async () => {
+  test("defaults inventory to empty array if no inventory field in firestore", async () => {
     jest.mocked(firestore.getDocFromServer).mockResolvedValue({
       exists: () => true,
       data: () => ({ 
