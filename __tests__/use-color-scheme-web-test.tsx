@@ -9,7 +9,7 @@ describe("useColorScheme (web)", () => {
   test("returns consistent value on multiple calls", () => {
     const firstCall = useColorScheme();
     const secondCall = useColorScheme();
-    
+
     expect(firstCall).toBe(secondCall);
     expect(firstCall).toBe("light");
     expect(secondCall).toBe("light");

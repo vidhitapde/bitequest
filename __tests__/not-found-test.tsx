@@ -4,7 +4,7 @@ import NotFoundScreen from "../app/+not-found";
 jest.mock("expo-router", () => ({
   Link: ({ children, ...props }: any) => children,
   Stack: {
-    Screen: ({ options }: any) => null
+    Screen: ({ options }: any) => null,
   },
 }));
 
