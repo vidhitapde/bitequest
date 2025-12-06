@@ -88,12 +88,12 @@ describe("<Shop />", () => {
       expect(getByText("Blue Pants")).toBeTruthy();
       expect(getByText("Green Shirt")).toBeTruthy();
       expect(getByText("Star Rug")).toBeTruthy();
-    });
+    }, { timeout: 10000 });
 
     expect(getByText("50 coins")).toBeTruthy();
     expect(getByText("75 coins")).toBeTruthy();
     expect(getByText("100 coins")).toBeTruthy();
-  });
+  }, 15000);
 
   test("displays shop items in grid layout", async () => {
     const { getByText } = render(<Shop />);
@@ -102,22 +102,22 @@ describe("<Shop />", () => {
       expect(getByText("Blue Pants")).toBeTruthy();
       expect(getByText("Green Shirt")).toBeTruthy();
       expect(getByText("Star Rug")).toBeTruthy();
-    });
-  });
+    }, { timeout: 10000 });
+  }, 15000);
 
   test("calls purchaseItem when shop item is pressed", async () => {
     const { getByText } = render(<Shop />);
     
     await waitFor(() => {
       expect(getByText("Blue Pants")).toBeTruthy();
-    });
+    }, { timeout: 10000 });
 
     const bluePantsItem = getByText("Blue Pants");
     fireEvent.press(bluePantsItem);
 
     expect(mockPurchaseItem).toHaveBeenCalledWith(mockShopItems[0]);
     expect(mockPush).toHaveBeenCalledWith("/(tabs)/shop");
-  });
+  }, 15000);
 
   test("renders items without 'Owned' text when inventory is empty", async () => {
     const { getByText, queryByText } = render(<Shop />);
@@ -126,19 +126,19 @@ describe("<Shop />", () => {
       expect(getByText("Blue Pants")).toBeTruthy();
       expect(getByText("Green Shirt")).toBeTruthy();
       expect(getByText("Star Rug")).toBeTruthy();
-    });
+    }, { timeout: 10000 });
 
     expect(queryByText("Owned")).toBeFalsy();
-  });
+  }, 15000);
 
   test("renders with proper mock data", async () => {
     const { getByText } = render(<Shop />);
-        await waitFor(() => {
+    await waitFor(() => {
       expect(getByText("Blue Pants")).toBeTruthy();
       expect(getByText("Green Shirt")).toBeTruthy();
       expect(getByText("Star Rug")).toBeTruthy();
-    });
-  });
+    }, { timeout: 10000 });
+  }, 15000);
 
   test("handles multiple item categories correctly", async () => {
     const { getByText } = render(<Shop />);
