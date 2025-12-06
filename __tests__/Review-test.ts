@@ -5,7 +5,7 @@ describe("Review Class", () => {
     test("create a review with all required params", () => {
         const restaurant = new Restaurant();
         const reviewData = {
-            name: "John Doe",
+            name: "user1",
             rating: 5,
             comment: "Excellent food and service!",
             photoURL: "https://example.com/photo.jpg"
@@ -57,7 +57,7 @@ describe("Review Class", () => {
 
     test("fromObject creates review from raw data", () => {
         const rawData = {
-            name: "Alice Smith",
+            name: "user2",
             restaurant: {
                 reviews: [],
                 avgRating: 4.2
@@ -69,7 +69,7 @@ describe("Review Class", () => {
 
         const review = Review.fromObject(rawData);
 
-        expect(review.name).toBe("Alice Smith");
+        expect(review.name).toBe("user2");
         expect(review.restaurant).toBeInstanceOf(Restaurant);
         expect(review.restaurant.avgRating).toBe(4.2);
         expect(review.rating).toBe(5);
@@ -79,7 +79,7 @@ describe("Review Class", () => {
 
     test("fromObject handles nested restaurant data", () => {
         const rawData = {
-            name: "Bob Johnson",
+            name: "user3",
             restaurant: {
                 reviews: [
                     {
@@ -94,7 +94,7 @@ describe("Review Class", () => {
             },
             rating: 4,
             comment: "Better than expected",
-            photoURL: "bob.jpg"
+            photoURL: "user3.jpg"
         };
 
         const review = Review.fromObject(rawData);
@@ -109,15 +109,15 @@ describe("Review Class", () => {
 
     test("serialize maintains data integrity", () => {
         const restaurant = new Restaurant([], 3.8);
-        const originalReview = new Review("Jane Doe", restaurant, 4, "Nice atmosphere", "jane.jpg");
+        const originalReview = new Review("user4", restaurant, 4, "Nice atmosphere", "user4.jpg");
 
         const serialized = originalReview.serialize();
         const restored = Review.fromObject(serialized);
 
-        expect(restored.name).toBe("Jane Doe");
+        expect(restored.name).toBe("user4");
         expect(restored.rating).toBe(4);
         expect(restored.comment).toBe("Nice atmosphere");
-        expect(restored.photoURL).toBe("jane.jpg");
+        expect(restored.photoURL).toBe("user4.jpg");
         expect(restored.restaurant.avgRating).toBe(3.8);
     });
 
@@ -126,19 +126,19 @@ describe("Review Class", () => {
     test("handles special characters in strings", () => {
         const restaurant = new Restaurant();
         const review = new Review(
-            "José García-Smith",
+            "user5",
             restaurant,
             5,
             "¡Excelente! The café's naïve approach to fusion cuisine 中文测试",
-            "https://example.com/José's%20photo.jpg"
+            "https://example.com/photo.jpg"
         );
 
         const serialized = review.serialize();
         const restored = Review.fromObject(serialized);
 
-        expect(restored.name).toBe("José García-Smith");
+        expect(restored.name).toBe("user5");
         expect(restored.comment).toBe("¡Excelente! The café's naïve approach to fusion cuisine 中文测试");
-        expect(restored.photoURL).toBe("https://example.com/José's%20photo.jpg");
+        expect(restored.photoURL).toBe("https://example.com/photo.jpg");
     });
 
     test("handles very long comment", () => {

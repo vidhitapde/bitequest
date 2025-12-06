@@ -26,18 +26,18 @@ describe("Restaurant Class", () => {
         const rawData = {
             reviews: [
                 {
-                    name: "Alice",
+                    name: "user1",
                     restaurant: { reviews: [], avgRating: -1 },
                     rating: 5,
                     comment: "Excellent!",
-                    photoURL: "alice.jpg"
+                    photoURL: "user1.jpg"
                 },
                 {
-                    name: "Bob",
+                    name: "user2",
                     restaurant: { reviews: [], avgRating: -1 },
                     rating: 3,
                     comment: "Average",
-                    photoURL: "bob.jpg"
+                    photoURL: "user2.jpg"
                 }
             ],
             avgRating: 4.0
@@ -47,12 +47,14 @@ describe("Restaurant Class", () => {
 
         expect(restaurant.reviews).toHaveLength(2);
         expect(restaurant.reviews[0]).toBeInstanceOf(Review);
-        expect(restaurant.reviews[0].name).toBe("Alice");
-        expect(restaurant.reviews[1].name).toBe("Bob");
+        expect(restaurant.reviews[0].name).toBe("user1");
+        expect(restaurant.reviews[1].name).toBe("user2");
         expect(restaurant.avgRating).toBe(4.0);
+        expect(restaurant.reviews[0].restaurant).toBeInstanceOf(Restaurant);
+        expect(restaurant.reviews[1].rating).toBe(5);
     });
 
-    test("fromObject handles missing reviews array", () => {
+    test("reviews is initialized as empty array and avgRating is correct", () => {
         const rawData = {
             avgRating: 3.5
         };
@@ -64,23 +66,37 @@ describe("Restaurant Class", () => {
     });
 
     test("serialize returns correct format", () => {
-        const mockReviews = [
-            new Review("John", new Restaurant(), 5, "Great!", "john.jpg"),
-            new Review("Jane", new Restaurant(), 4, "Good", "jane.jpg")
-        ];
-        const restaurant = new Restaurant(mockReviews, 4.5);
+        const raw = {
+        reviews: [
+            {
+            name: "user1",
+            restaurant: { reviews: [], avgRating: 2 },
+            rating: 4,
+            comment: "Tasty",
+            photoURL: "http://example.com/user1.jpg",
+            },
+        ],
+        avgRating: 3,
+        };
 
+        const restaurant = Restaurant.fromObject(raw);
         const serialized = restaurant.serialize();
 
-        expect(serialized).toHaveProperty("reviews");
-        expect(serialized).toHaveProperty("avgRating");
-        expect(serialized.reviews).toHaveLength(2);
-        expect(serialized.avgRating).toBe(4.5);
-        expect(serialized.reviews[0]).toHaveProperty("name");
-        expect(serialized.reviews[0]).toHaveProperty("restaurant");
-        expect(serialized.reviews[0]).toHaveProperty("rating");
-        expect(serialized.reviews[0]).toHaveProperty("comment");
-        expect(serialized.reviews[0]).toHaveProperty("photoURL");
+        expect(serialized).toEqual({
+        avgRating: 3,
+        reviews: [
+            {
+            name: "user1",
+            restaurant: {
+                reviews: [],
+                avgRating: 2,
+            },
+            rating: 4,
+            comment: "Tasty",
+            photoURL: "http://example.com/user1.jpg",
+            },
+        ],
+        });
     });
 
    
